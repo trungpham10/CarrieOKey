@@ -30,7 +30,7 @@ export default class SongList extends Component {
     
     }
     deleteSong = (id)=>{
-        fetch(baseUrl + '/songs/' + id,{
+        fetch(baseUrl + '/song/' + id,{
             method: 'DELETE'
         }).then( response => {
             const findIndex = this.state.songs.findIndex(song => song._id === id)
