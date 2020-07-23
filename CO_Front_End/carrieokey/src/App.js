@@ -17,6 +17,7 @@ export default class App extends Component {
       songName: [],
       artist: String, 
       lyrics: String,
+      user: '' //after login this will have user name
     }
   }
 

@@ -1,16 +1,17 @@
 const mongoose = require('mongoose')
 
-const favoriteSchema = mongoose.Schema({
+const songSchema = mongoose.Schema({
  
 songName: String,                                  //need to add more keywords as project progress
 lyrics: String,
 artist: String,
-urlLink:String                               
+videoLink: String,
+image: String                               
 
 })
 
 
-module.exports = mongoose.model('Favorite', favoriteSchema)
+module.exports = mongoose.model('Song', songSchema)
 
 
 
