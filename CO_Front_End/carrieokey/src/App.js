@@ -13,10 +13,7 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      songName: [],
-      artist: String , 
-      lyrics: String ,
-      url: String
+      user= '' //after login this will have user name
     }
   }
 
