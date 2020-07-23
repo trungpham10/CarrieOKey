@@ -4,6 +4,7 @@ import "../App.css";
 export default function Signup() {
   return (
     <div class="sign-up">
+      <h2>Sign up</h2>
       <form class="signup-form">
         <input
           type="text"
