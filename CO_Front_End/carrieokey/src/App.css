@@ -1,17 +1,23 @@
-.log-in {
+.log-in,
+.sign-up {
   text-align: center;
 }
 
 #email,
 #password,
-#login-submit {
+#login-submit,
+#signup-submit,
+#lastName,
+#firstName {
   font-size: medium;
   width: 350px;
   height: 50px;
   border-radius: 10px;
 }
 
-#login-submit {
+#login-submit,
+#signup-submit {
   color: whitesmoke;
   background-color: rgb(18, 4, 153);
+  margin-top: 10px;
 }
