@@ -5,7 +5,7 @@ const favoriteSchema = mongoose.Schema({
 songName: String,                                  //need to add more keywords as project progress
 lyrics: String,
 artist: String,
-urlLink: String                               
+urlLink:String                               
 
 })
 
