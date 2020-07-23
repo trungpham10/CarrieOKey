@@ -6,4 +6,8 @@ users.get("/", (req, res) => {
   res.send("Login/Sign up");
 });
 
+users.post("/", (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = users;
