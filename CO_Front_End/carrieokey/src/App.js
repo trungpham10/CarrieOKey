@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
 import SongList from "./components/SongList"
+import EditSong from './components/EditSong'
 
 const baseUrl = "http://localhost:3003";
 
@@ -64,7 +65,7 @@ export default class App extends Component {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/newSong" component={NewSongForm} />
             <Route exact path="/songs" component={SongList} />
-
+            <Route exact path='/editsong' component={EditSong} />
             {/* <Route
               exact
               path="/signup"

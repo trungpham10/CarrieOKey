@@ -27,7 +27,20 @@ export default class SongList extends Component {
                     songs: parsedData,
                 }),
                 err => console.log(err))
+    
     }
+    deleteSong = (id)=>{
+        fetch(baseUrl + '/songs/' + id,{
+            method: 'DELETE'
+        }).then( response => {
+            const findIndex = this.state.songs.findIndex(song => song._id)
+            const copySongs = [...this.state.songs]
+            copySongs.splice(findIndex, 1)
+            this.this.setState({songs : copySongs})
+        })
+    }
+
+
     componentDidMount(){
         console.log('Loading songs')
         this.getSongs()
@@ -38,8 +51,14 @@ export default class SongList extends Component {
             <div>
                 {this.state.songs.map((song) =>{
                     return(
-                        <Song artist={song.artist} songName={song.songName} lyrics={song.lyrics} videoLink={song.videoLink} image={song.image}/>
+                        <div>
+                            <Song artist={song.artist} songName={song.songName} lyrics={song.lyrics} videoLink={song.videoLink} image={song.image}/>
+                            <a href="/editSong"><button>EDIT</button></a>
+
+                            <button onClick={()=>this.deleteSong(song._id)}>DELETE</button>
+                        </div>
                     )
+                    
                 })}
             </div>
         )
