@@ -110,9 +110,9 @@ handleSubmit (event) {
 
                 <label htmlFor="image">Image:</label>
 
-                    <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input>
+                    <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input><br></br>
 
-                <input type="submit" value="Add Song" />
+                <input type="submit" value="Edit Song" />
             </form>
             </div>
             
