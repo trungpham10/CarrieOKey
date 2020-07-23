@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import NewSongForm from './components/NewSongForm'
 
 let baseUrl = 'http://localhost:3000'
 
@@ -14,9 +15,8 @@ export default class App extends Component {
     super(props)
     this.state = {
       songName: [],
-      artist: String , 
-      lyrics: String ,
-      url: String
+      artist: String, 
+      lyrics: String,
     }
   }
 
@@ -24,6 +24,7 @@ export default class App extends Component {
     return (
       <Router>
         <NavBar />
+        <NewSongForm/>
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />
