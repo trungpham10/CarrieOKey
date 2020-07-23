@@ -6,6 +6,25 @@ const path = require("path");
 app.use(express.static(path.join(__dirname)));
 app.use(express.urlencoded({ extended: true }));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const usersController = require("./controllers/users_controller");
 app.use("/", usersController);
 
