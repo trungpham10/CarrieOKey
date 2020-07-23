@@ -56,11 +56,9 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
             <Route exact path="/newSong" component={NewSongForm} />
             <Route exact path="/songs" component={SongList} />
-
-            {/* <Route
+            <Route
               exact
               path="/signup"
               render={() => (
@@ -73,7 +71,7 @@ export default class App extends Component {
                   handleSignup={this.handleSignup}
                 />
               )}
-            /> */}
+            />
           </Switch>
         </div>
       </Router>
