@@ -11,11 +11,11 @@ export default class SongTitleTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.songs.map((song)=>{
-                            <tr >
-                                <td>{song.songName}</td>
-                            </tr>
-                        })}
+                       {this.props.songs.map((song) =>{
+                           return(
+                               <tr onClick={()=>this.props.selectSong(song)}><td>{song.songName}</td></tr>
+                           )
+                       })}
                     </tbody>
                 </table>
             </div>
