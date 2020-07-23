@@ -26,14 +26,8 @@ app.use(express.static(path.join(__dirname)));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-<<<<<<< HEAD
-
-cors
-const whitelist = ['http://localhost:3000'];                    //need to add heruko link once created
-=======
 //cors
 const whitelist = ["http://localhost:3000"]; //need to add heruko link once created
->>>>>>> 14425dd564999010c0cd3e6dba6eac11283dc2b1
 const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) >= 0) {
