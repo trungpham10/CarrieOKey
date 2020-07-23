@@ -20,6 +20,9 @@ export default function NavBar() {
         <li>
           <Link to="/newSong">New Song</Link>
         </li>
+        <li>
+          <Link to="/songs">Song List</Link>
+        </li>
       </ul>
     </div>
   );

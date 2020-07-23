@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
 import Song from './Song'
 
-const baseUrl = 'localhost:3003'
+const baseUrl = "http://localhost:3003"
 
 
 export default class SongList extends Component {
-    constructor(props) {
-        super(props)
+    
         state = {
-            songs =[]
+            songs: [],
         }
 
-    }
     getSongs() {
-        fetch(baseUrl + '/song') //subject to change
+        fetch(baseUrl + '/song',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }) //subject to change
             .then(data => {
+                console.log(data)
                 return data.json()
             },
                 err => console.log(err))
@@ -24,7 +28,8 @@ export default class SongList extends Component {
                 }),
                 err => console.log(err))
     }
-    onComponentDidMount(){
+    componentDidMount(){
+        console.log('Loading songs')
         this.getSongs()
     }
 
