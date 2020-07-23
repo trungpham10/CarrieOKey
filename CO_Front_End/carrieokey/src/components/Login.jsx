@@ -1,13 +1,20 @@
 import React from "react";
+import "../App.css";
 
 export default function Login() {
   return (
-    <div>
-      <form>
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" name="email"></input>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password"></input>
+    <div class="log-in">
+      <form class="login-form">
+        <input type="text" id="email" name="email" placeholder="Email"></input>
+        <br />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+        ></input>
+        <br />
+        <input type="submit" id="login-submit" value="Log in" />
       </form>
     </div>
   );
