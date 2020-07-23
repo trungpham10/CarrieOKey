@@ -3,9 +3,9 @@ import "../App.css";
 
 export default function Login(props) {
   return (
-    <div class="log-in">
+    <div className="log-in">
       <h2>Log in</h2>
-      <form class="login-form" onSubmit={(evt) => props.handleLogin(evt)}>
+      <form className="login-form" onSubmit={(evt) => props.handleLogin(evt)}>
         <input
           type="text"
           id="logEmail"
