@@ -48,11 +48,6 @@ export default class App extends Component {
       });
   };
 
-  
-
-  
-  
-
   render() {
     return (
       <Router>
@@ -62,11 +57,10 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
             <Route exact path="/newSong" component={NewSongForm} />
             <Route exact path="/songs" component={SongList} />
             <Route exact path='/editsong' component={EditSong} />
-            {/* <Route
+            <Route
               exact
               path="/signup"
               render={() => (
@@ -79,7 +73,7 @@ export default class App extends Component {
                   handleSignup={this.handleSignup}
                 />
               )}
-            /> */}
+            />
           </Switch>
         </div>
       </Router>
