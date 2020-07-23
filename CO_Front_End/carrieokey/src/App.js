@@ -19,19 +19,25 @@ export default class App extends Component {
       lyrics: String,
       user: '' //after login this will have user name
     }
+    
   }
+
+  
 
   render() {
     return (
       <Router>
         <NavBar />
-        <NewSongForm/>
+        
+        
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/newSong" component={NewSongForm} />
+            
           </Switch>
         </div>
       </Router>
