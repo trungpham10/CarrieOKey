@@ -8,7 +8,9 @@
 #login-submit,
 #signup-submit,
 #lastName,
-#firstName {
+#firstName,
+#logEmail,
+#logPassword {
   font-size: medium;
   width: 350px;
   height: 50px;
