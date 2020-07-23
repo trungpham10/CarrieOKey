@@ -6,6 +6,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
+import SongList from "./components/SongList"
 
 const baseUrl = "http://localhost:3003";
 
@@ -46,45 +47,25 @@ export default class App extends Component {
       });
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      songName: [],
-      artist: String,
-      lyrics: String,
-<<<<<<< HEAD
-      user: '' //after login this will have user name
-    }
-    
-=======
-      user: "", //after login this will have user name
-    };
->>>>>>> c38f2ce12f3f7997f9f37dc0ec07ad24d1a357bf
-  }
+  
 
+  
   
 
   render() {
     return (
       <Router>
         <NavBar />
-<<<<<<< HEAD
-        
-        
-=======
-        <NewSongForm />
->>>>>>> c38f2ce12f3f7997f9f37dc0ec07ad24d1a357bf
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-<<<<<<< HEAD
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/newSong" component={NewSongForm} />
-            
-=======
-            <Route
+            <Route exact path="/songs" component={SongList} />
+
+            {/* <Route
               exact
               path="/signup"
               render={() => (
@@ -97,8 +78,7 @@ export default class App extends Component {
                   handleSignup={this.handleSignup}
                 />
               )}
-            />
->>>>>>> c38f2ce12f3f7997f9f37dc0ec07ad24d1a357bf
+            /> */}
           </Switch>
         </div>
       </Router>

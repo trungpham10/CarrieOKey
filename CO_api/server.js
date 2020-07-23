@@ -52,5 +52,5 @@ app.use("/song", songController);
 // app.use("/favorite", favoriteController);
 
 app.listen(PORT, () => {
-  console.log("listeing at port", PORT);
+  console.log("listening at port", PORT);
 });
