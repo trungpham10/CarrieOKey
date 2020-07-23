@@ -6,7 +6,20 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 
+let baseUrl = 'http://localhost:3000'
+
 export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      songName: [],
+      artist: String , 
+      lyrics: String ,
+      url: String
+    }
+  }
+
   render() {
     return (
       <Router>
