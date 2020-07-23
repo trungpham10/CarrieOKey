@@ -33,7 +33,7 @@ export default class SongList extends Component {
             <div>
                 {this.state.songs.map((song) =>{
                     return(
-                        <Song artist={song.artist} songName={song.songName} lyrics={song.lyrics} />
+                        <Song artist={song.artist} songName={song.songName} lyrics={song.lyrics} urlLink={song.urlLink}/>
                     )
                 })}
             </div>
