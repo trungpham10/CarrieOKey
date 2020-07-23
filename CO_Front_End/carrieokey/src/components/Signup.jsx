@@ -1,16 +1,18 @@
 import React from "react";
 import "../App.css";
 
-export default function Signup() {
+export default function Signup(props) {
   return (
     <div class="sign-up">
       <h2>Sign up</h2>
-      <form class="signup-form">
+      <form class="signup-form" onSubmit={(evt) => props.handleSignup(evt)}>
         <input
           type="text"
           id="firstName"
           name="firstName"
           placeholder="First name"
+          onChange={(evt) => props.handleChange(evt)}
+          value={props.firstName}
         ></input>
         <br />
         <input
@@ -18,6 +20,8 @@ export default function Signup() {
           id="lastName"
           name="lastName"
           placeholder="Last name"
+          onChange={(evt) => props.handleChange(evt)}
+          value={props.lastName}
         ></input>
         <br />
         <input
@@ -25,6 +29,8 @@ export default function Signup() {
           id="email"
           name="email"
           placeholder="Email address"
+          onChange={(evt) => props.handleChange(evt)}
+          value={props.email}
         ></input>
         <br />
         <input
@@ -32,9 +38,11 @@ export default function Signup() {
           id="password"
           name="password"
           placeholder="Password"
+          onChange={(evt) => props.handleChange(evt)}
+          value={props.password}
         ></input>
         <br />
-        <input type="submit" id="signup-submit" value="Agree and continue" />
+        <input type="submit" id="signup-submit" value="Sign up" />
       </form>
     </div>
   );
