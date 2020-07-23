@@ -33,10 +33,10 @@ export default class SongList extends Component {
         fetch(baseUrl + '/songs/' + id,{
             method: 'DELETE'
         }).then( response => {
-            const findIndex = this.state.songs.findIndex(song => song._id)
+            const findIndex = this.state.songs.findIndex(song => song._id === id)
             const copySongs = [...this.state.songs]
             copySongs.splice(findIndex, 1)
-            this.this.setState({songs : copySongs})
+            this.setState({songs : copySongs})
         })
     }
 
@@ -51,7 +51,7 @@ export default class SongList extends Component {
             <div>
                 {this.state.songs.map((song) =>{
                     return(
-                        <div>
+                        <div key={song._id}>
                             <Song artist={song.artist} songName={song.songName} lyrics={song.lyrics} videoLink={song.videoLink} image={song.image}/>
                             <a href="/editSong"><button>EDIT</button></a>
 
