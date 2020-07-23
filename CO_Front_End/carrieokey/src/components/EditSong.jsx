@@ -7,6 +7,7 @@ export default class EditSongForm extends Component {
         super(props)
         this.state = {
             songs: [],
+            song_id: '',
             songName: '',
             artist: '',
             lyrics: '',
@@ -25,7 +26,7 @@ export default class EditSongForm extends Component {
 
 handleSubmit (event) {
     event.preventDefault()
-    fetch(baseUrl + '/song', {
+    fetch(baseUrl + '/song/' + this.state.song_id, {
         method: 'PUT',
         body: JSON.stringify({
             songName: this.state.songName,
@@ -40,14 +41,15 @@ handleSubmit (event) {
     }).then (res => res.json())
         .then (resJson => {
             console.log(resJson)
-        // this.props.handleAddSong(resJson)
-        // this.setState({
-        //     songName: '',
-        //     artist: '',
-        //     lyrics: '',
-        //     videoLink: '',
-        //     image: ''
-        // })
+        this.props.handleAddSong(resJson)
+        this.setState({
+            songName: resJson.songName,
+            artist: resJson.artist,
+            lyrics: resJson.lyrics,
+            videoLink: resJson.videoLink,
+            image: resJson.image,
+        })
+        this.getSongs()
     }).catch (error => console.error({'Error': error}))
 }
 
@@ -78,6 +80,7 @@ handleSubmit (event) {
     selectSong (song) {
            // this.state.songs.indexOf(event.target.id) // something
         this.setState({
+            song_id: song._id,
             songName: song.songName,
             artist: song.artist,
             lyrics: song.lyrics,
@@ -102,7 +105,7 @@ handleSubmit (event) {
 
                 <label htmlFor= "lyrics">Lyrics:</label>
 
-                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange}></textarea><br></br>
+                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange} value={this.state.lyrics}></textarea><br></br>
 
                 <label htmlFor= "videoLink">Video Link:</label>
 
@@ -112,7 +115,7 @@ handleSubmit (event) {
 
                     <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input><br></br>
 
-                <input type="submit" value="Edit Song" />
+                <input type="submit" value="Update Song" />
             </form>
             </div>
             
