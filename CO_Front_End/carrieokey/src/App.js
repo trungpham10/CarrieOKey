@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import NewSongForm from "./components/NewSongForm";
 
 const baseUrl = "http://localhost:3003";
 
@@ -45,10 +46,21 @@ export default class App extends Component {
       });
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      songName: [],
+      artist: String,
+      lyrics: String,
+      user: "", //after login this will have user name
+    };
+  }
+
   render() {
     return (
       <Router>
         <NavBar />
+        <NewSongForm />
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />

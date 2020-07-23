@@ -6,8 +6,7 @@ const PORT = process.env.PORT || 3003;
 const path = require("path");
 
 // connections
-const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/favorite";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/song";
 mongoose.connection.on("error", (err) =>
   console.log(err.message + " is Mongod not running?")
 );
@@ -46,8 +45,11 @@ app.use(cors(corsOptions));
 const usersController = require("./controllers/users_controller");
 app.use("/users", usersController);
 
-const favoriteController = require("./controllers/favorite_controller.js");
-app.use("/favorite", favoriteController);
+const songController = require("./controllers/song_controller.js");
+app.use("/song", songController);
+
+// const favoriteController = require("./controllers/favorite_controller.js");
+// app.use("/favorite", favoriteController);
 
 app.listen(PORT, () => {
   console.log("listeing at port", PORT);
