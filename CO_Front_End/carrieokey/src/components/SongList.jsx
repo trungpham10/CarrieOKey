@@ -36,7 +36,7 @@ export default class SongList extends Component {
             const findIndex = this.state.songs.findIndex(song => song._id)
             const copySongs = [...this.state.songs]
             copySongs.splice(findIndex, 1)
-            this.this.setState({songs : copySongs})
+            this.setState({songs : copySongs})
         })
     }
 
