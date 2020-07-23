@@ -7,8 +7,6 @@ lyrics: String,
 artist: String,
 urlLink: String                               
 
-
-
 })
 
 
@@ -16,4 +14,4 @@ module.exports = mongoose.model('Favorite', favoriteSchema)
 
 
 
-//curl -X POST -H "Content-Type: application/json" -d '{"songName":"acdc"}' http://localhost:3003/favorite
+//curl -X POST -H "Content-Type: application/json" -d '{"songName":"test", "lyrics":"asdfghjyttrffvb", "artist":"testartist"}' http://localhost:3003/favorite
