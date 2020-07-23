@@ -6,6 +6,7 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
+import SongList from "./components/SongList";
 
 const baseUrl = "http://localhost:3003";
 
@@ -46,16 +47,6 @@ export default class App extends Component {
       });
   };
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     songName: [],
-  //     artist: String,
-  //     lyrics: String,
-  //     user: "", //after login this will have user name
-  //   };
-  // }
-
   render() {
     return (
       <Router>
@@ -65,7 +56,11 @@ export default class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-            <Route
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/newSong" component={NewSongForm} />
+            <Route exact path="/songs" component={SongList} />
+
+            {/* <Route
               exact
               path="/signup"
               render={() => (
@@ -78,8 +73,7 @@ export default class App extends Component {
                   handleSignup={this.handleSignup}
                 />
               )}
-            />
-            <Route exact path="/new" component={NewSongForm} />
+            /> */}
           </Switch>
         </div>
       </Router>
