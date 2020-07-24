@@ -23,3 +23,8 @@
   background-color: rgb(18, 4, 153);
   margin-top: 10px;
 }
+
+.authentication-button {
+  float: right;
+  color: red;
+}
