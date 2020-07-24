@@ -3,10 +3,6 @@ import "../App.css";
 import { Redirect } from "react-router-dom";
 
 export default function Signup(props) {
-  if (props.isSignedUp) {
-    return <Redirect to="/login" />;
-  }
-
   return (
     <div className="sign-up">
       <h2>Sign up</h2>

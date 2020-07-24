@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -27,7 +21,6 @@ export default class App extends Component {
     logEmail: "",
     logPassword: "",
     isLoggedIn: false,
-    isSignedUp: false,
   };
 
   handleChange = (event) => {
@@ -57,7 +50,6 @@ export default class App extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
-          isSignedUp: true,
           password: "",
           firstName: "",
           lastName: "",
@@ -137,7 +129,6 @@ export default class App extends Component {
                     password={this.state.password}
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
-                    isSignedUp={this.state.isSignedUp}
                   />
                 )}
               />
