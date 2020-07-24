@@ -30,6 +30,9 @@ export default class App extends Component {
   handleSignup = (event) => {
     console.log("handle signup clicked");
     event.preventDefault();
+
+    const { history } = this.props;
+
     fetch(baseUrl + "/users", {
       method: "POST",
       body: JSON.stringify({
@@ -41,18 +44,17 @@ export default class App extends Component {
       headers: {
         "Content-type": "application/json",
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    }).then(() => {
+      history.push("/");
+    });
   };
 
   handleLogin = (event) => {
     console.log("handle signin clicked");
     event.preventDefault();
+
+    const { history } = this.props;
+
     fetch(baseUrl + "/sessions", {
       method: "POST",
       body: JSON.stringify({
@@ -62,13 +64,9 @@ export default class App extends Component {
       headers: {
         "Content-type": "application/json",
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    }).then(() => {
+      history.push("/");
+    });
   };
 
   render() {

@@ -13,6 +13,7 @@ sessions.post("/", (req, res) => {
       console.log("founduser: ", foundUser);
       if (bcrypt.compareSync(req.body.logPassword, foundUser.password)) {
         req.session.currentUser = foundUser;
+        console.log("Password matched, sign in successfully!");
       } else {
         console.log("Password does not match");
       }
