@@ -24,31 +24,17 @@ export default class SongLookUp extends Component {
         event.preventDefault()
         this.setState({
           searchURL: this.state.baseURL + this.state.artist + '/'+ this.state.songName + this.state.key 
-        })
-        fetch(this.state.searchURL)
-        .then(res => {
-            this.setState({
-                results: res.json()
-            })
-        })
-        .catch(error => console.error({ 'Error': error }))
-      }
-
-
-    // handleSubmit (event) {
-    //     event.preventdefault()
-    //     const baseURL = 'https://orion.apiseeds.com/api/music/lyric/';
-    //     const key = '?apikey=EMvxpFHfby2rEWssJnkr8rFYmQ1y8WONbq9qiWJKELQPfYgvz9Rm29AqIlNTglYo';
-    //     // console.log('I am fetching')
-    //     debugger
-    //     fetch(baseURL + this.state.artists + '/' + this.state.songNames + key)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-
-
-    //         }).catch(error => console.error({ 'Error': error }))
-    // }
+        }, () => {
+            console.log(this.state.searchURL)
+            fetch(this.state.searchURL)
+              .then(response => {
+                return response.json()
+              }).then(json => console.log(json),
+                err => console.log(err))
+          })
+        }
+        
+    
 
     render() {
         return (
