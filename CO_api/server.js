@@ -7,6 +7,9 @@ const path = require("path");
 const session = require("express-session");
 require("dotenv").config();
 
+const Song = require('./models/song')
+const seedSongs = require('./seedsongs.js')
+
 // connections
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/song";
 mongoose.connection.on("error", (err) =>
@@ -62,6 +65,17 @@ app.use("/song", songController);
 
 // const favoriteController = require("./controllers/favorite_controller.js");
 // app.use("/favorite", favoriteController);
+
+//data seed path
+app.get('/seed', (req,res)=>{
+  Song.create(seedSongs, (err, createdSongs)=>{
+    if(err) {
+      res.status(400).json({ error: err.message})
+  }
+
+  res.status(200).send(createdSongs)
+  })
+})
 
 app.listen(PORT, () => {
   console.log("listening at port", PORT);
