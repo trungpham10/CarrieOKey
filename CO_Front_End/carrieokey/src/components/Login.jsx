@@ -1,7 +1,12 @@
 import React from "react";
 import "../App.css";
+import { Redirect } from "react-router-dom";
 
 export default function Login(props) {
+  if (props.isLoggedIn) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="log-in">
       <h2>Log in</h2>
