@@ -26,6 +26,9 @@ export default function NavBar() {
         <li>
           <Link to="/songs">Song List</Link>
         </li>
+        <li>
+          <Link to="/songLookUp">Look Up Song</Link>
+        </li>
       </ul>
       </Navbar>
     </Container>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Container from "react-bootstrap/Container"
+
 const baseUrl = 'http://localhost:3003'
 export default class NewSongForm extends Component {
     constructor(props){
@@ -9,16 +10,26 @@ export default class NewSongForm extends Component {
             artist: "",
             lyrics: "",
             videoLink: "",
-            image: ""  
+            image: "",
+            
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-
+       
 
     }
-    
+    //https://orion.apiseeds.com/api/music/lyric/Patsy Cline/crazy?apikey=EMvxpFHfby2rEWssJnkr8rFYmQ1y8WONbq9qiWJKELQPfYgvz9Rm29AqIlNTglYo 
+
+
+
+
+
+
+    /////
+
     handleChange(event) {
         this.setState({[event.currentTarget.id]: event.currentTarget.value})
+        
     }
 
 handleSubmit (event) {
@@ -55,6 +66,7 @@ handleSubmit (event) {
     render() {
         return (
             <Container>
+                <h3>Enter Song</h3>
             <form onSubmit={(event) => this.handleSubmit(event)}>
                 <label htmlFor= "songName" >Song Name:</label>
 
@@ -78,9 +90,13 @@ handleSubmit (event) {
 
                 <input type="submit" value="Add Song" />
 
-
+                
             </form>
+           
+           
+            
             </Container>
+
             
         )
     }
