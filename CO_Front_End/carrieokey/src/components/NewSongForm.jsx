@@ -66,7 +66,7 @@ handleSubmit (event) {
 
                 <label htmlFor= "lyrics">Lyrics:</label>
 
-                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange}></textarea><br></br>
+                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange} value={this.state.lyrics}></textarea><br></br>
 
                 <label htmlFor= "videoLink">Video Link:</label>
 
