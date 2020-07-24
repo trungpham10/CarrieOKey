@@ -58,6 +58,10 @@ export default class App extends Component {
         console.log(data);
         this.setState({
           isSignedUp: true,
+          password: "",
+          firstName: "",
+          lastName: "",
+          email: "",
         });
       });
   };
@@ -82,6 +86,7 @@ export default class App extends Component {
         console.log("User's first name:", data.firstName);
         this.setState({
           isLoggedIn: true,
+          logEmail: "",
           logPassword: "",
         });
       });
