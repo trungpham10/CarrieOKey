@@ -6,8 +6,9 @@ import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
-import SongList from "./components/SongList"
-import EditSong from './components/EditSong'
+import SongList from "./components/SongList";
+import EditSong from "./components/EditSong";
+import Container from 'react-bootstrap/Container'
 
 const baseUrl = "http://localhost:3003";
 
@@ -17,6 +18,8 @@ export default class App extends Component {
     lastName: "",
     email: "",
     password: "",
+    logEmail: "",
+    logPassword: "",
   };
 
   handleChange = (event) => {
@@ -28,6 +31,9 @@ export default class App extends Component {
   handleSignup = (event) => {
     console.log("handle signup clicked");
     event.preventDefault();
+
+    const { history } = this.props;
+
     fetch(baseUrl + "/users", {
       method: "POST",
       body: JSON.stringify({
@@ -39,27 +45,55 @@ export default class App extends Component {
       headers: {
         "Content-type": "application/json",
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
+    }).then(() => {
+      history.push("/");
+    });
+  };
+
+  handleLogin = (event) => {
+    console.log("handle signin clicked");
+    event.preventDefault();
+
+    const { history } = this.props;
+
+    fetch(baseUrl + "/sessions", {
+      method: "POST",
+      body: JSON.stringify({
+        logEmail: this.state.logEmail,
+        logPassword: this.state.logPassword,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(() => {
+      history.push("/");
+    });
   };
 
   render() {
     return (
+      <Container>
       <Router>
         <NavBar />
         <div className="App">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/login"
+              render={() => (
+                <Login
+                  logEmail={this.state.logEmail}
+                  logPassword={this.state.logPassword}
+                  handleChange={this.handleChange}
+                  handleLogin={this.handleLogin}
+                />
+              )}
+            />
             <Route exact path="/newSong" component={NewSongForm} />
             <Route exact path="/songs" component={SongList} />
-            <Route exact path='/editsong' component={EditSong} />
+            <Route exact path="/editsong" component={EditSong} />
             <Route
               exact
               path="/signup"
@@ -77,6 +111,7 @@ export default class App extends Component {
           </Switch>
         </div>
       </Router>
+      </Container>
     );
   }
 }

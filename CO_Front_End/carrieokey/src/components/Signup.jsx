@@ -3,9 +3,9 @@ import "../App.css";
 
 export default function Signup(props) {
   return (
-    <div class="sign-up">
+    <div className="sign-up">
       <h2>Sign up</h2>
-      <form class="signup-form" onSubmit={(evt) => props.handleSignup(evt)}>
+      <form className="signup-form" onSubmit={(evt) => props.handleSignup(evt)}>
         <input
           type="text"
           id="firstName"

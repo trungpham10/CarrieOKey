@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Song from './Song'
+import Container from "react-bootstrap/Container"
+import CardDeck from 'react-bootstrap/CardDeck'
 
 const baseUrl = "http://localhost:3003"
 
@@ -48,7 +50,7 @@ export default class SongList extends Component {
 
     render() {
         return (
-            <div>
+            <CardDeck>
                 {this.state.songs.map((song) =>{
                     return(
                         <div key={song._id}>
@@ -60,7 +62,7 @@ export default class SongList extends Component {
                     )
                     
                 })}
-            </div>
+            </CardDeck>
         )
     }
 }

@@ -4,6 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3003;
 const path = require("path");
+const session = require("express-session");
+require("dotenv").config();
 
 // connections
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/song";
@@ -25,6 +27,13 @@ mongoose.connection.once("open", () => {
 app.use(express.static(path.join(__dirname)));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(
+  session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 //cors
 const whitelist = ["http://localhost:3000"]; //need to add heruko link once created
@@ -44,6 +53,9 @@ app.use(cors(corsOptions));
 
 const usersController = require("./controllers/users_controller");
 app.use("/users", usersController);
+
+const sessionsController = require("./controllers/sessions_controller");
+app.use("/sessions", sessionsController);
 
 const songController = require("./controllers/song_controller.js");
 app.use("/song", songController);
