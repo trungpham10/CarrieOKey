@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
 import SongList from "./components/SongList";
 import EditSong from "./components/EditSong";
+import Container from 'react-bootstrap/Container'
 
 const baseUrl = "http://localhost:3003";
 
@@ -71,6 +72,7 @@ export default class App extends Component {
 
   render() {
     return (
+      <Container>
       <Router>
         <NavBar />
         <div className="App">
@@ -109,6 +111,7 @@ export default class App extends Component {
           </Switch>
         </div>
       </Router>
+      </Container>
     );
   }
 }

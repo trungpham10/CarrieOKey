@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Container from "react-bootstrap/Container"
 const baseUrl = 'http://localhost:3003'
 export default class NewSongForm extends Component {
     constructor(props){
@@ -54,7 +54,7 @@ handleSubmit (event) {
 
     render() {
         return (
-            <div className="container" >
+            <Container>
             <form onSubmit={(event) => this.handleSubmit(event)}>
                 <label htmlFor= "songName" >Song Name:</label>
 
@@ -80,7 +80,7 @@ handleSubmit (event) {
 
 
             </form>
-            </div>
+            </Container>
             
         )
     }

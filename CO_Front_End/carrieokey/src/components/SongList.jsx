@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Song from './Song'
+import Container from "react-bootstrap/Container"
 
 const baseUrl = "http://localhost:3003"
 
@@ -48,7 +49,7 @@ export default class SongList extends Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 {this.state.songs.map((song) =>{
                     return(
                         <div>
@@ -60,7 +61,7 @@ export default class SongList extends Component {
                     )
                     
                 })}
-            </div>
+            </Container>
         )
     }
 }

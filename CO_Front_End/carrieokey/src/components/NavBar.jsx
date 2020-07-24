@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container"
+import Navbar from "react-bootstrap/Navbar"
 
 export default function NavBar() {
   return (
-    <div className="navBar">
+    <Container>
+      <Navbar sticky='top'>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -24,6 +27,7 @@ export default function NavBar() {
           <Link to="/songs">Song List</Link>
         </li>
       </ul>
-    </div>
+      </Navbar>
+    </Container>
   );
 }
