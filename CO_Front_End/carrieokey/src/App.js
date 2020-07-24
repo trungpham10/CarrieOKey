@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -8,7 +14,7 @@ import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
 import SongList from "./components/SongList";
 import EditSong from "./components/EditSong";
-import Container from 'react-bootstrap/Container'
+import Container from "react-bootstrap/Container";
 
 const baseUrl = "http://localhost:3003";
 
@@ -20,6 +26,8 @@ export default class App extends Component {
     password: "",
     logEmail: "",
     logPassword: "",
+    isLoggedIn: false,
+    isSignedUp: false,
   };
 
   handleChange = (event) => {
@@ -32,8 +40,6 @@ export default class App extends Component {
     console.log("handle signup clicked");
     event.preventDefault();
 
-    const { history } = this.props;
-
     fetch(baseUrl + "/users", {
       method: "POST",
       body: JSON.stringify({
@@ -45,16 +51,21 @@ export default class App extends Component {
       headers: {
         "Content-type": "application/json",
       },
-    }).then(() => {
-      history.push("/");
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          isSignedUp: true,
+        });
+      });
   };
 
   handleLogin = (event) => {
     console.log("handle signin clicked");
     event.preventDefault();
-
-    const { history } = this.props;
 
     fetch(baseUrl + "/sessions", {
       method: "POST",
@@ -65,52 +76,62 @@ export default class App extends Component {
       headers: {
         "Content-type": "application/json",
       },
-    }).then(() => {
-      history.push("/");
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("User's first name:", data.firstName);
+        this.setState({
+          isLoggedIn: true,
+          logPassword: "",
+        });
+      });
   };
 
   render() {
     return (
       <Container>
-      <Router>
-        <NavBar />
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route
-              exact
-              path="/login"
-              render={() => (
-                <Login
-                  logEmail={this.state.logEmail}
-                  logPassword={this.state.logPassword}
-                  handleChange={this.handleChange}
-                  handleLogin={this.handleLogin}
-                />
-              )}
-            />
-            <Route exact path="/newSong" component={NewSongForm} />
-            <Route exact path="/songs" component={SongList} />
-            <Route exact path="/editsong" component={EditSong} />
-            <Route
-              exact
-              path="/signup"
-              render={() => (
-                <Signup
-                  firstName={this.state.firstName}
-                  lastName={this.state.lastName}
-                  email={this.state.email}
-                  password={this.state.password}
-                  handleChange={this.handleChange}
-                  handleSignup={this.handleSignup}
-                />
-              )}
-            />
-          </Switch>
-        </div>
-      </Router>
+        <Router>
+          <NavBar />
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/login"
+                render={() => (
+                  <Login
+                    logEmail={this.state.logEmail}
+                    logPassword={this.state.logPassword}
+                    handleChange={this.handleChange}
+                    handleLogin={this.handleLogin}
+                    isLoggedIn={this.state.isLoggedIn}
+                  />
+                )}
+              />
+              <Route exact path="/newSong" component={NewSongForm} />
+              <Route exact path="/songs" component={SongList} />
+              <Route exact path="/editsong" component={EditSong} />
+              <Route
+                exact
+                path="/signup"
+                render={() => (
+                  <Signup
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                    email={this.state.email}
+                    password={this.state.password}
+                    handleChange={this.handleChange}
+                    handleSignup={this.handleSignup}
+                    isSignedUp={this.state.isSignedUp}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
+        </Router>
       </Container>
     );
   }

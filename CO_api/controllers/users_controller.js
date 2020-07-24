@@ -15,6 +15,7 @@ users.post("/", (req, res) => {
 
   User.create(req.body, (err, createdUser) => {
     console.log("New user is created: ", createdUser);
+    res.send(createdUser);
   });
 });
 
