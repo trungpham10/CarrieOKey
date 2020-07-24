@@ -93,7 +93,7 @@ export default class App extends Component {
     return (
       <Container>
         <Router>
-          <NavBar />
+          <NavBar isLoggedIn={this.state.isLoggedIn} />
           <div className="App">
             <Switch>
               <Route exact path="/" component={Home} />
