@@ -37,7 +37,6 @@ export default class App extends Component {
   };
 
   handleSignup = (event) => {
-    console.log("handle signup clicked");
     event.preventDefault();
 
     fetch(baseUrl + "/users", {
@@ -64,7 +63,6 @@ export default class App extends Component {
   };
 
   handleLogin = (event) => {
-    console.log("handle signin clicked");
     event.preventDefault();
 
     fetch(baseUrl + "/sessions", {
@@ -89,11 +87,20 @@ export default class App extends Component {
       });
   };
 
+  handleLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+    });
+  };
+
   render() {
     return (
       <Container>
         <Router>
-          <NavBar isLoggedIn={this.state.isLoggedIn} />
+          <NavBar
+            isLoggedIn={this.state.isLoggedIn}
+            handleLogout={this.handleLogout}
+          />
           <div className="App">
             <Switch>
               <Route exact path="/" component={Home} />

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import "../App.css";
 
-export default function NavBar() {
+export default function NavBar(props) {
   return (
     <Container>
       <Navbar sticky="top">
@@ -33,7 +33,9 @@ export default function NavBar() {
           </button>
           <br />
           <button>
-            <Link to="/login">Log out</Link>
+            <Link to="/login" onClick={() => props.handleLogout()}>
+              Log out
+            </Link>
           </button>
           <br />
         </ul>
