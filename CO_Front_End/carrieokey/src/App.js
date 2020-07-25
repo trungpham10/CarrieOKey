@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
+import VideoChat from "./components/VideoChat";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
@@ -23,6 +24,7 @@ export default class App extends Component {
     isLoggedIn: false,
     isSignedUp: false,
     songsCollection: [],
+    searchText: "",
     isVideoConnected: false,
   };
 
@@ -119,6 +121,7 @@ export default class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route exact path="/video" component={VideoChat} />
               <Route
                 exact
                 path="/login"
