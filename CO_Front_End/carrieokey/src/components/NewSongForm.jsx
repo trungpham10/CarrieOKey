@@ -77,7 +77,7 @@ export default class NewSongForm extends Component {
                     <Form.Control type="text" id="image" placeholder="Image Link" value={this.state.image} onChange={this.handleChange} /><br></br>
 
 
-                    <Button type="submit" variant="warning">Add Song</Button>
+                    <Button type="submit" id="formButton" variant="warning">Add Song</Button>
 
                 </Form.Group>
                 </Form>
