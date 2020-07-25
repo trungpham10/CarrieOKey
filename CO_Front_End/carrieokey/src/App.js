@@ -105,7 +105,16 @@ export default class App extends Component {
           />
           <div className="App">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Home
+                    isLoggedIn={this.state.isLoggedIn}
+                    firstName={this.state.firstName}
+                  />
+                )}
+              />
               <Route exact path="/about" component={About} />
               <Route
                 exact
@@ -134,6 +143,7 @@ export default class App extends Component {
                     password={this.state.password}
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
+                    isLoggedIn={this.state.isLoggedIn}
                   />
                 )}
               />
