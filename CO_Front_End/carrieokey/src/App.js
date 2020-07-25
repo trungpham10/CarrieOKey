@@ -21,6 +21,8 @@ export default class App extends Component {
     logEmail: "",
     logPassword: "",
     isLoggedIn: false,
+    songsCollection: [],
+    isVideoConnected: false,
   };
 
   handleChange = (event) => {
@@ -80,6 +82,7 @@ export default class App extends Component {
           isLoggedIn: true,
           logEmail: "",
           logPassword: "",
+          firstName: data.firstName,
         });
       });
   };
