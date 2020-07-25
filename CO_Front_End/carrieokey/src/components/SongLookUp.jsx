@@ -29,7 +29,9 @@ export default class SongLookUp extends Component {
             fetch(this.state.searchURL)
               .then(response => {
                 return response.json()
-              }).then(json => console.log(json),
+              }).then(json => this.setState({
+                  songs: json,
+              }),
                 err => console.log(err))
           })
         }
@@ -37,6 +39,7 @@ export default class SongLookUp extends Component {
     
 
     render() {
+        console.log(this.state.songs)
         return (
             <div>
 
@@ -52,7 +55,15 @@ export default class SongLookUp extends Component {
 
                     <input type="submit" value="Look up song" />
                 </form>
+               <div>
+                   
+                   <ul>
+                        <li></li>
+                   </ul>
+               </div>
+                
             </div>
         )
+      
     }
 }
