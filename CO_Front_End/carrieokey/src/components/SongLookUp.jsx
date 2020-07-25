@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import ApiRender from './ApiRender'
+
 
 export default class SongLookUp extends Component {
     constructor(props) {
@@ -33,6 +35,8 @@ export default class SongLookUp extends Component {
                   songs: json,
               }),
                 err => console.log(err))
+                
+               
           })
         }
         
@@ -55,23 +59,10 @@ export default class SongLookUp extends Component {
 
                     <input type="submit" value="Look up song" />
                 </form>
-               <div>
-                   
-                   
-                   {
-                   this.state.songs ?
-                   <ul> 
-                         <h5>SONG</h5>
-                          <li>{this.state.songs.result.track.name}</li>
-                        <h5>ARTIST</h5>
-                          <li>{this.state.songs.result.artist.name}</li>
-                        <h5>LYRICS</h5>
-                         <li>{this.state.songs.result.track.text}</li>
-                   </ul> : null
-                   }
-                     
-               </div>
-                
+               {this.state.songs 
+               ? < ApiRender songs={this.state.songs}/>
+               : null
+               }
             </div>
         )
       
