@@ -3,6 +3,7 @@ import "../App.css";
 import { Redirect } from "react-router-dom";
 import SongList from "./SongList";
 import Container from "react-bootstrap/Container";
+import Button from 'react-bootstrap/Button'
 
 export default function Signup(props) {
   if (props.isLoggedIn) {
@@ -15,7 +16,7 @@ export default function Signup(props) {
 
   return (
     <Container>
-      <div className="sign-up">
+      <div className="sign-up mt-5">
         <h2>Sign up</h2>
         <form
           className="signup-form"
@@ -57,10 +58,10 @@ export default function Signup(props) {
             value={props.password}
           ></input>
           <br />
-          <a href="/login">Already a member? Sign in</a>
+          <a href="/login"><Button>Already a member? Sign in!</Button></a>
           <br />
 
-          <input type="submit" id="signup-submit" value="Let's get started!" />
+          <Button type="submit"> Let's get started </Button>
         </form>
       </div>
       <br />

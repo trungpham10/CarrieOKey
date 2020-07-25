@@ -3,6 +3,7 @@ import "../App.css";
 import { Redirect } from "react-router-dom";
 import SongList from "./SongList";
 import Container from "react-bootstrap/Container";
+import Button from 'react-bootstrap/button'
 
 export default function Login(props) {
   if (props.isLoggedIn) {
@@ -11,7 +12,7 @@ export default function Login(props) {
 
   return (
     <Container>
-      <div className="log-in">
+      <div className="log-in mt-5">
         <h2>Log in, see what's Poppin'!</h2>
         <form className="login-form" onSubmit={(evt) => props.handleLogin(evt)}>
           <input
@@ -32,10 +33,10 @@ export default function Login(props) {
             value={props.logPassword}
           ></input>
           <br />
-          <a href="/signup">Not on Carrie O'Key yet? Sign up</a>
+          <a href="/signup"><Button>Not on Carrie O'Key yet? Sign up!</Button></a>
           <br />
 
-          <input type="submit" id="login-submit" value="I'm in!" />
+          <Button type="submit">I'm in!</Button>
         </form>
       </div>
       <br />

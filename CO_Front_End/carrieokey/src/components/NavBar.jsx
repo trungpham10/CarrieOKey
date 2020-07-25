@@ -1,36 +1,55 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import "../App.css";
 import AuthenticationNav from "./AuthenticationNav";
+import Button from 'react-bootstrap/Button'
 
 export default function NavBar(props) {
   return (
     <Container>
-      <Navbar sticky="top">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/newSong">New Song</Link>
-          </li>
-          <li>
-            <Link to="/songs">Song List</Link>
-          </li>
-        </ul>
+      <Nav justify className="justify-content-center align-items-center mb-5" >
 
-        <ul className="authentication-button">
-          <AuthenticationNav
-            isLoggedIn={props.isLoggedIn}
-            handleLogout={props.handleLogout}
-          />
-        </ul>
-      </Navbar>
+        <Nav.Item>
+          <Nav.Link><Link to="/"><Button>Home</Button></Link></Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link><Link to="/about"><Button>About</Button></Link></Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link><Link to="/newSong"><Button>New Song</Button></Link></Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link><Link to="/songs"><Button>Song List</Button></Link></Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link><Link to="/video"><Button>Karaoke Room</Button></Link></Nav.Link>
+        </Nav.Item>
+        {/* //conditional rendering of buttons based on logged in state */}
+        {props.isLoggedIn ?
+          <Nav.Item>
+            <Nav.Link><Link to="/login" onClick={() => props.handleLogout()}>
+              <Button>Log out</Button>
+            </Link></Nav.Link>
+          </Nav.Item> 
+          :
+          <>
+            <Nav.Item>
+              <Nav.Link > <Link to="/login">
+                <Button>Log in</Button>
+              </Link></Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link > <Link to="/signup">
+                <Button>Sign up</Button>
+              </Link></Nav.Link>
+            </Nav.Item>
+          </>
+        }
+
+
+      </Nav>
     </Container>
   );
 }

@@ -83,7 +83,7 @@ export default class App extends Component {
       .then((data) => {
         this.setState({
           isLoggedIn: true,
-          logEmail: "",
+          logEmail: data.email,
           logPassword: "",
           firstName: data.firstName,
           lastName: data.lastName,
@@ -97,6 +97,7 @@ export default class App extends Component {
       firstName: "",
       lastName: "",
       isSignedUp: false,
+      logEmail: "",
     });
   };
 
@@ -121,7 +122,18 @@ export default class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
-              <Route exact path="/video" component={VideoChat} />
+              <Route
+                exact
+                path="/video"
+                render={() => (
+                  <VideoChat
+                    isLoggedIn={this.state.isLoggedIn}
+                    logEmail={this.state.logEmail}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                  />
+                )}
+              />
               <Route
                 exact
                 path="/login"
