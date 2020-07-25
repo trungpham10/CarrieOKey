@@ -22,6 +22,9 @@ export default function NavBar(props) {
           <li>
             <Link to="/songs">Song List</Link>
           </li>
+          <li>
+            <Link to="/video">Karaoke room</Link>
+          </li>
         </ul>
 
         <ul className="authentication-button">
