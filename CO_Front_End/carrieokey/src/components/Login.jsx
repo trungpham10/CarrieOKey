@@ -32,6 +32,7 @@ export default function Login(props) {
             value={props.logPassword}
           ></input>
           <br />
+          {props.warning ? <p>{props.warning}</p> : ""}
           <a href="/signup">Not on Carrie O'Key yet? Sign up</a>
           <br />
 

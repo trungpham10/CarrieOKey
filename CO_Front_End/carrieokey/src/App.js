@@ -26,6 +26,7 @@ export default class App extends Component {
     songsCollection: [],
     searchText: "",
     isVideoConnected: false,
+    warning: "",
   };
 
   handleChange = (event) => {
@@ -66,7 +67,7 @@ export default class App extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-
+    // debugger;
     fetch(baseUrl + "/sessions", {
       method: "POST",
       body: JSON.stringify({
@@ -77,17 +78,26 @@ export default class App extends Component {
         "Content-type": "application/json",
       },
     })
-      .then((res) => {
+      .then((res, err) => {
+        if (err) {
+          console.log(err);
+        }
         return res.json();
       })
       .then((data) => {
-        this.setState({
-          isLoggedIn: true,
-          logEmail: data.email,
-          logPassword: "",
-          firstName: data.firstName,
-          lastName: data.lastName,
-        });
+        if (data.error) {
+          this.setState({
+            warning: data.error,
+          });
+        } else {
+          this.setState({
+            isLoggedIn: true,
+            logEmail: data.email,
+            logPassword: "",
+            firstName: data.firstName,
+            lastName: data.lastName,
+          });
+        }
       });
   };
 
@@ -144,6 +154,7 @@ export default class App extends Component {
                     handleChange={this.handleChange}
                     handleLogin={this.handleLogin}
                     isLoggedIn={this.state.isLoggedIn}
+                    warning={this.state.warning}
                   />
                 )}
               />
