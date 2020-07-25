@@ -15,9 +15,10 @@ export default class Song extends Component {
                 By {this.props.artist}
                 </Card.Subtitle>
                 <Card.Text>
-                {this.props.lyrics}
+                {this.props.lyrics.slice(1, this.props.lyricLength)}
                 </Card.Text>
                 <a href={this.props.videoLink}><Button variant="primary">Link to Video of this Song</Button></a>
+                <Button variant="danger" onClick={()=> this.props.deleteSong(this.props.songID)}>Delete </Button>
                 </Card.Body>
             </Card>
             
