@@ -24,7 +24,27 @@
   margin-top: 10px;
 }
 
-.authentication-button {
-  float: right;
-  color: red;
+
+
+.container{
+  text-align: center;
+  
 }
+
+.form-control{
+  margin-left: 250px;
+  width: 50%;
+  
+}
+
+#root{
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.btn{
+  margin-bottom: 50px;
+  margin-left: 20%;
+}
+
+
+
