@@ -97,6 +97,7 @@ export default class App extends Component {
       firstName: "",
       lastName: "",
       isSignedUp: false,
+      logEmail: "",
     });
   };
 

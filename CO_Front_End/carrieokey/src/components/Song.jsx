@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 export default class Song extends Component {
     render() {
