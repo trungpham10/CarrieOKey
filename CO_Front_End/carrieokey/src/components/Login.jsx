@@ -18,7 +18,7 @@ export default function Login(props) {
             type="text"
             id="logEmail"
             name="email"
-            placeholder="Email, for real.."
+            placeholder="Email"
             onChange={(evt) => props.handleChange(evt)}
             value={props.logEmail}
           ></input>
@@ -33,7 +33,7 @@ export default function Login(props) {
           ></input>
           <br />
           <p>
-            <a href="/signup">but I don't have an account</a>
+            <a href="/signup">Not on Carrie O'Key yet? Sign up</a>
           </p>
           <input type="submit" id="login-submit" value="I'm in!" />
         </form>
