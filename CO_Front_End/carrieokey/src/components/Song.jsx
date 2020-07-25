@@ -14,9 +14,12 @@ export default class Song extends Component {
         <Card.Body>
           <Card.Title>{this.props.songName}</Card.Title>
           <Card.Subtitle>By {this.props.artist}</Card.Subtitle>
-          <Card.Text>
-            <pre>{this.props.lyrics.slice(1, this.props.lyricLength)}</pre>
-          </Card.Text>
+          <br />
+          <pre className="text-white">
+            <Card.Text>
+              {this.props.lyrics.slice(1, this.props.lyricLength)}
+            </Card.Text>
+          </pre>
           <a href={this.props.videoLink}>
             <Button variant="primary">Link to Video of this Song</Button>
           </a>
