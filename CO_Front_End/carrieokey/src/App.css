@@ -14,13 +14,13 @@
   font-size: medium;
   width: 350px;
   height: 50px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 #login-submit,
 #signup-submit {
   color: whitesmoke;
-  background-color: rgb(18, 4, 153);
+  /* background-color: rgb(18, 4, 153); */
   margin-top: 10px;
 }
 
@@ -42,9 +42,12 @@
 }
 
 .btn{
-  margin-bottom: 50px;
-  margin-left: 20%;
+  margin: 5px;
+  
 }
 
+.nav {
+  background: lightgrey;
+}
 
 

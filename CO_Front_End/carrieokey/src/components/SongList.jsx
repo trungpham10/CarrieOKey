@@ -49,7 +49,7 @@ export default class SongList extends Component {
 
     render() {
         return (
-            <CardDeck>
+            <CardDeck className="justify-content-center mt-5">
                 {this.state.songs.map((song) => {
                     return (
                         <div>
@@ -63,9 +63,9 @@ export default class SongList extends Component {
                                 deleteSong={this.deleteSong}
                                 songID={song._id}
                             />
-                            <a href="/editSong">
+                            {/* <a href="/editSong">
                                 <button>EDIT</button>
-                            </a>
+                            </a> */}
 
                         </div>
                     );
