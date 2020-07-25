@@ -12,13 +12,13 @@ export default function Login(props) {
   return (
     <Container>
       <div className="log-in">
-        <h2>Log in</h2>
+        <h2>Log in, see what's Poppin'!</h2>
         <form className="login-form" onSubmit={(evt) => props.handleLogin(evt)}>
           <input
             type="text"
             id="logEmail"
             name="email"
-            placeholder="Email"
+            placeholder="Email, for real.."
             onChange={(evt) => props.handleChange(evt)}
             value={props.logEmail}
           ></input>
@@ -32,7 +32,7 @@ export default function Login(props) {
             value={props.logPassword}
           ></input>
           <br />
-          <input type="submit" id="login-submit" value="Log in" />
+          <input type="submit" id="login-submit" value="I'm in!" />
         </form>
       </div>
       <br />
