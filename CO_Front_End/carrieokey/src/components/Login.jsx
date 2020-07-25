@@ -12,7 +12,7 @@ export default function Login(props) {
 
   return (
     <Container>
-      <div className="log-in">
+      <div className="log-in mt-5">
         <h2>Log in, see what's Poppin'!</h2>
         <form className="login-form" onSubmit={(evt) => props.handleLogin(evt)}>
           <input

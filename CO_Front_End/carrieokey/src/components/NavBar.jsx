@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 export default function NavBar(props) {
   return (
     <Container>
-      <Nav sticky="top">
+      <Nav justify className="justify-content-center align-items-center" >
 
         <Nav.Item>
           <Nav.Link><Link to="/">Home</Link></Nav.Link>
@@ -24,7 +24,7 @@ export default function NavBar(props) {
           <Nav.Link><Link to="/songs">Song List</Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/video">Karaoke room</Link></Nav.Link>
+          <Nav.Link><Link to="/video">Karaoke Room</Link></Nav.Link>
         </Nav.Item>
         {/* //conditional rendering of buttons based on logged in state */}
         {props.isLoggedIn ?
@@ -48,11 +48,6 @@ export default function NavBar(props) {
           </>
         }
 
-
-        {/* <AuthenticationNav
-            isLoggedIn={props.isLoggedIn}
-            handleLogout={props.handleLogout}
-          /> */}
 
       </Nav>
     </Container>

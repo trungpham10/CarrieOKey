@@ -16,7 +16,7 @@ export default function Signup(props) {
 
   return (
     <Container>
-      <div className="sign-up">
+      <div className="sign-up mt-5">
         <h2>Sign up</h2>
         <form
           className="signup-form"
