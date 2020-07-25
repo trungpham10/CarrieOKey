@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
+import VideoChat from "./components/VideoChat";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
@@ -28,6 +23,9 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
+    songsCollection: [],
+    searchText: "",
+    isVideoConnected: false,
   };
 
   handleChange = (event) => {
@@ -37,7 +35,6 @@ export default class App extends Component {
   };
 
   handleSignup = (event) => {
-    console.log("handle signup clicked");
     event.preventDefault();
 
     fetch(baseUrl + "/users", {
@@ -58,13 +55,16 @@ export default class App extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
+          password: "",
           isSignedUp: true,
+          firstName: "",
+          lastName: "",
+          email: "",
         });
       });
   };
 
   handleLogin = (event) => {
-    console.log("handle signin clicked");
     event.preventDefault();
 
     fetch(baseUrl + "/sessions", {
@@ -81,23 +81,47 @@ export default class App extends Component {
         return res.json();
       })
       .then((data) => {
-        console.log("User's first name:", data.firstName);
         this.setState({
           isLoggedIn: true,
+          logEmail: "",
           logPassword: "",
+          firstName: data.firstName,
+          lastName: data.lastName,
         });
       });
+  };
+
+  handleLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+      firstName: "",
+      lastName: "",
+      isSignedUp: false,
+    });
   };
 
   render() {
     return (
       <Container>
         <Router>
-          <NavBar />
+          <NavBar
+            isLoggedIn={this.state.isLoggedIn}
+            handleLogout={this.handleLogout}
+          />
           <div className="App">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Home
+                    isLoggedIn={this.state.isLoggedIn}
+                    firstName={this.state.firstName}
+                  />
+                )}
+              />
               <Route exact path="/about" component={About} />
+              <Route exact path="/video" component={VideoChat} />
               <Route
                 exact
                 path="/login"
@@ -125,6 +149,7 @@ export default class App extends Component {
                     password={this.state.password}
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
+                    isLoggedIn={this.state.isLoggedIn}
                     isSignedUp={this.state.isSignedUp}
                   />
                 )}

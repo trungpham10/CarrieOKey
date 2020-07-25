@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Container from "react-bootstrap/Container"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 const baseUrl = 'http://localhost:3003'
 export default class NewSongForm extends Component {
     constructor(props){
@@ -55,33 +57,29 @@ handleSubmit (event) {
     render() {
         return (
             <Container>
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <label htmlFor= "songName" >Song Name:</label>
+            <Form.Group onSubmit={(event) => this.handleSubmit(event)}>
 
-                    <input type="text" id="songName" value={this.state.songName} onChange={this.handleChange}></input><br></br>
-
-                <label htmlFor= "artist">Artist:</label>
-
-                    <input type="text" id="artist" value={this.state.artist} onChange={this.handleChange}></input><br></br>
-
-                <label htmlFor= "lyrics">Lyrics:</label>
-
-                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange} value={this.state.lyrics}></textarea><br></br>
-
-                <label htmlFor= "videoLink">Video Link:</label>
-
-                    <input type="text" id="videoLink" value={this.state.videoLink} onChange={this.handleChange}></input><br></br>
-
-                <label htmlFor="image">Image:</label>
-
-                    <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input>
-
-                <input type="submit" value="Add Song" />
-
-
-            </form>
-            </Container>
+                    <Form.Control type="text" placeholder="Song Title" id="songName" value={this.state.songName} onChange={this.handleChange} />
+                    <br />
             
+
+                    <Form.Control type="text" placeholder="Artist" id="artist" value={this.state.artist} onChange={this.handleChange} />
+                    <br/>
+
+                    <Form.Group controlId="Form.ControlTextarea"/>
+                    <Form.Control as="textarea" rows="2" placeholder="Lyrics" id="lyrics" value={this.state.lyrics} onChange={this.handleChange}/><br/>
+            
+                    <Form.Control type="text" placeholder="Video Link" id="videoLink" value={this.state.videoLink} onChange={this.handleChange}/>
+                    <br />
+            
+
+                    <Form.Control type="text" id="image" placeholder="Image Link"  value={this.state.image} onChange={this.handleChange}/><br></br>
+            
+
+                <Button type="submit"variant="warning">Add Song</Button>
+
+            </Form.Group>
+            </Container>
         )
     }
 }
