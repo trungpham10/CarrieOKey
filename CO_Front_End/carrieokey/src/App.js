@@ -108,6 +108,7 @@ export default class App extends Component {
       lastName: "",
       isSignedUp: false,
       logEmail: "",
+      warning: "",
     });
   };
 
