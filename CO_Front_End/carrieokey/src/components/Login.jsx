@@ -32,9 +32,9 @@ export default function Login(props) {
             value={props.logPassword}
           ></input>
           <br />
-          <p>
-            <a href="/signup">Not on Carrie O'Key yet? Sign up</a>
-          </p>
+          <a href="/signup">Not on Carrie O'Key yet? Sign up</a>
+          <br />
+
           <input type="submit" id="login-submit" value="I'm in!" />
         </form>
       </div>
