@@ -57,6 +57,9 @@ export default function Signup(props) {
             value={props.password}
           ></input>
           <br />
+          <a href="/login">Already a member? Sign in</a>
+          <br />
+
           <input type="submit" id="signup-submit" value="Let's get started!" />
         </form>
       </div>
