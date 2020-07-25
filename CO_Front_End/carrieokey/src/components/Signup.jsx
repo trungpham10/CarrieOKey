@@ -9,6 +9,10 @@ export default function Signup(props) {
     return <Redirect to="/" />;
   }
 
+  if (props.isSignedUp) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <Container>
       <div className="sign-up">

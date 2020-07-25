@@ -21,6 +21,7 @@ export default class App extends Component {
     logEmail: "",
     logPassword: "",
     isLoggedIn: false,
+    isSignedUp: false,
     songsCollection: [],
     isVideoConnected: false,
   };
@@ -53,6 +54,7 @@ export default class App extends Component {
         console.log(data);
         this.setState({
           password: "",
+          isSignedUp: true,
           firstName: "",
           lastName: "",
           email: "",
@@ -92,6 +94,7 @@ export default class App extends Component {
       isLoggedIn: false,
       firstName: "",
       lastName: "",
+      isSignedUp: false,
     });
   };
 
@@ -144,6 +147,7 @@ export default class App extends Component {
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
                     isLoggedIn={this.state.isLoggedIn}
+                    isSignedUp={this.state.isSignedUp}
                   />
                 )}
               />
