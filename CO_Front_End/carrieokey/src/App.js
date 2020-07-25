@@ -77,12 +77,12 @@ export default class App extends Component {
         return res.json();
       })
       .then((data) => {
-        console.log("User's first name:", data.firstName);
         this.setState({
           isLoggedIn: true,
           logEmail: "",
           logPassword: "",
           firstName: data.firstName,
+          lastName: data.lastName,
         });
       });
   };
@@ -90,6 +90,8 @@ export default class App extends Component {
   handleLogout = () => {
     this.setState({
       isLoggedIn: false,
+      firstName: "",
+      lastName: "",
     });
   };
 
