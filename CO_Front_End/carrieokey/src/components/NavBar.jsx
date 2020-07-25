@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import "../App.css";
+import AuthenticationNav from "./AuthenticationNav";
 
 export default function NavBar(props) {
   return (
@@ -24,20 +25,10 @@ export default function NavBar(props) {
         </ul>
 
         <ul className="authentication-button">
-          <button>
-            <Link to="/login">Log in</Link>
-          </button>
-          <br />
-          <button>
-            <Link to="/signup">Sign up</Link>
-          </button>
-          <br />
-          <button>
-            <Link to="/login" onClick={() => props.handleLogout()}>
-              Log out
-            </Link>
-          </button>
-          <br />
+          <AuthenticationNav
+            isLoggedIn={props.isLoggedIn}
+            handleLogout={props.handleLogout}
+          />
         </ul>
       </Navbar>
     </Container>
