@@ -30,6 +30,7 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
+    songs:[],
   };
 
   handleChange = (event) => {
@@ -123,7 +124,8 @@ export default class App extends Component {
               <Route exact path="/newSong" component={NewSongForm} />
               <Route exact path="/songs" component={SongList} />
               <Route exact path="/editsong" component={EditSong} />
-              <Route exact path="/songLookUp" component={SongLookUp} />
+              <Route exact path="/songLookUp" component={SongLookUp} 
+              render={() => (<SongLookUp songs={this.state.songs}/>)}/>
               <Route
                 exact
                 path="/signup"

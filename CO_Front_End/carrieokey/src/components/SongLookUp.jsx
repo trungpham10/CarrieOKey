@@ -39,7 +39,7 @@ export default class SongLookUp extends Component {
     
 
     render() {
-        console.log(this.state.songs)
+        // console.log(this.state.songs)
         return (
             <div>
 
@@ -57,9 +57,19 @@ export default class SongLookUp extends Component {
                 </form>
                <div>
                    
-                   <ul>
-                        <li></li>
-                   </ul>
+                   
+                   {
+                   this.state.songs ?
+                   <ul> 
+                         <h5>SONG</h5>
+                          <li>{this.state.songs.result.track.name}</li>
+                        <h5>ARTIST</h5>
+                          <li>{this.state.songs.result.artist.name}</li>
+                        <h5>LYRICS</h5>
+                         <li>{this.state.songs.result.track.text}</li>
+                   </ul> : null
+                   }
+                     
                </div>
                 
             </div>
