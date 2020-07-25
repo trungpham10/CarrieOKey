@@ -9,22 +9,22 @@ import Button from 'react-bootstrap/Button'
 export default function NavBar(props) {
   return (
     <Container>
-      <Nav justify className="justify-content-center align-items-center" >
+      <Nav justify className="justify-content-center align-items-center mb-5" >
 
         <Nav.Item>
-          <Nav.Link><Link to="/">Home</Link></Nav.Link>
+          <Nav.Link><Link to="/"><Button>Home</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/about">About</Link></Nav.Link>
+          <Nav.Link><Link to="/about"><Button>About</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/newSong">New Song</Link></Nav.Link>
+          <Nav.Link><Link to="/newSong"><Button>New Song</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/songs">Song List</Link></Nav.Link>
+          <Nav.Link><Link to="/songs"><Button>Song List</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/video">Karaoke Room</Link></Nav.Link>
+          <Nav.Link><Link to="/video"><Button>Karaoke Room</Button></Link></Nav.Link>
         </Nav.Item>
         {/* //conditional rendering of buttons based on logged in state */}
         {props.isLoggedIn ?
