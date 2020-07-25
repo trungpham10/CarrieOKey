@@ -1,11 +1,22 @@
 import React from "react";
-import Container from "react-bootstrap/Container"
-import SongList from './SongList'
-export default function Home() {
+import Container from "react-bootstrap/Container";
+import SongList from "./SongList";
+import UserGreeting from "./UserGreeting";
+
+export default function Home(props) {
+  if (props.isLoggedIn) {
+    return (
+      <UserGreeting isLoggedIn={props.isLoggedIn} firstName={props.firstName} />
+    );
+  }
+
   return (
     <Container>
-      <h1>Carrie O'Key</h1>
-      <h2>Welcome to my collection of favorite Karaoke songs!  Here you can create your own personal collection of songs, and browse the collections of others.  </h2>
+      <h1>Welcome to Carrie O'Key!</h1>
+      <h2>
+        Create your own songs, see what your friends are up to, and have a
+        karaoke with them.
+      </h2>
       <br></br>
       <SongList />
     </Container>
