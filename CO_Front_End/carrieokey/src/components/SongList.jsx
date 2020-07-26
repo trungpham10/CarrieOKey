@@ -52,7 +52,7 @@ export default class SongList extends Component {
             <CardDeck className="justify-content-center mt-5">
                 {this.state.songs.map((song) => {
                     return (
-                        <div>
+                        <div id="cardDeck">
                             <Song
                                 artist={song.artist}
                                 songName={song.songName}
