@@ -9,12 +9,12 @@ export default class ApiRender extends Component {
                   <h3>Results not found</h3> 
                   ) : (
               
-                   <ul> 
-                         <h5>SONG</h5>
+                   <ul style={{ 'list-style-type': 'none'}}> 
+                         <h5 style={{'textDecoration': 'underline'}}>SONG</h5>
                           <li>{this.props.songs.result.track.name}</li>
-                        <h5>ARTIST</h5>
+                        <h5 style={{'textDecoration': 'underline'}}>ARTIST</h5>
                           <li>{this.props.songs.result.artist.name}</li>
-                        <h5>LYRICS</h5>
+                        <h5 style={{'textDecoration': 'underline'}}>LYRICS</h5>
                          <li>{this.props.songs.result.track.text}</li>
                    </ul> 
                    

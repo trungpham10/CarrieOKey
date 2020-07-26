@@ -1,5 +1,8 @@
-import React, { Component } from 'react'
-import ApiRender from './ApiRender'
+import React, { Component } from 'react';
+import ApiRender from './ApiRender';
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 
 export default class SongLookUp extends Component {
@@ -45,25 +48,34 @@ export default class SongLookUp extends Component {
     render() {
         // console.log(this.state.songs)
         return (
+            <Container>
             <div>
 
-                <form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
+                <Form.Group>
+                <Form.Label>Artist</Form.Label>
+                <Form.Control
+                    
+                   type="text" id="artist" value={this.state.artist} onChange={this.handleChange}
+                   />
+                   <br />
+                   <Form.Label>SONG</Form.Label>
+            <Form.Control
+                
+                    type="text" id="songName" value={this.state.songName} onChange={this.handleChange}
+                    />
+            <br />
 
-                    <label htmlFor="artist">Artist:</label>
-
-                    <input type="text" id="artist" value={this.state.artist} onChange={this.handleChange} ></input><br></br>
-
-                    <label htmlFor="songName" >Song Name:</label>
-
-                    <input type="text" id="songName" value={this.state.songName} onChange={this.handleChange}></input><br></br>
-
-                    <input type="submit" value="Look up song" />
-                </form>
+                    <Button type="submit" variant="warning">Look up Song</Button>
+                    </Form.Group>
+                </Form>
+                
                {this.state.songs 
                ? < ApiRender songs={this.state.songs}/>
                : null
                }
             </div>
+            </Container>
         )
       
     }
