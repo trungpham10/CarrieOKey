@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import About from "./components/About";
+import VideoChat from "./components/VideoChat";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
@@ -32,6 +27,10 @@ export default class App extends Component {
     isLoggedIn: false,
     isSignedUp: false,
     songs:[],
+    songsCollection: [],
+    searchText: "",
+    isVideoConnected: false,
+    warning: "",
   };
 
   handleChange = (event) => {
@@ -61,14 +60,18 @@ export default class App extends Component {
       .then((data) => {
         console.log(data);
         this.setState({
+          password: "",
           isSignedUp: true,
+          firstName: "",
+          lastName: "",
+          email: "",
         });
       });
   };
 
   handleLogin = (event) => {
     event.preventDefault();
-
+    // debugger;
     fetch(baseUrl + "/sessions", {
       method: "POST",
       body: JSON.stringify({
@@ -79,21 +82,37 @@ export default class App extends Component {
         "Content-type": "application/json",
       },
     })
-      .then((res) => {
+      .then((res, err) => {
+        if (err) {
+          console.log(err);
+        }
         return res.json();
       })
       .then((data) => {
-        console.log("User's first name:", data.firstName);
-        this.setState({
-          isLoggedIn: true,
-          logPassword: "",
-        });
+        if (data.error) {
+          this.setState({
+            warning: data.error,
+          });
+        } else {
+          this.setState({
+            isLoggedIn: true,
+            logEmail: data.email,
+            logPassword: "",
+            firstName: data.firstName,
+            lastName: data.lastName,
+          });
+        }
       });
   };
 
   handleLogout = () => {
     this.setState({
       isLoggedIn: false,
+      firstName: "",
+      lastName: "",
+      isSignedUp: false,
+      logEmail: "",
+      warning: "",
     });
   };
 
@@ -107,8 +126,29 @@ export default class App extends Component {
           />
           <div className="App">
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Home
+                    isLoggedIn={this.state.isLoggedIn}
+                    firstName={this.state.firstName}
+                  />
+                )}
+              />
               <Route exact path="/about" component={About} />
+              <Route
+                exact
+                path="/video"
+                render={() => (
+                  <VideoChat
+                    isLoggedIn={this.state.isLoggedIn}
+                    logEmail={this.state.logEmail}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                  />
+                )}
+              />
               <Route
                 exact
                 path="/login"
@@ -119,6 +159,7 @@ export default class App extends Component {
                     handleChange={this.handleChange}
                     handleLogin={this.handleLogin}
                     isLoggedIn={this.state.isLoggedIn}
+                    warning={this.state.warning}
                   />
                 )}
               />
@@ -138,6 +179,7 @@ export default class App extends Component {
                     password={this.state.password}
                     handleChange={this.handleChange}
                     handleSignup={this.handleSignup}
+                    isLoggedIn={this.state.isLoggedIn}
                     isSignedUp={this.state.isSignedUp}
                   />
                 )}

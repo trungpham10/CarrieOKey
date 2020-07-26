@@ -1,104 +1,114 @@
-import React, { Component } from 'react'
-import Container from "react-bootstrap/Container"
 
-
-const baseUrl = 'http://localhost:3003'
+import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+const baseUrl = "http://localhost:3003";
 export default class NewSongForm extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            songName: "",
-            artist: "",
-            lyrics: "",
-            videoLink: "",
-            image: "",
-            
-        }
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-       
+  constructor(props) {
+    super(props);
+    this.state = {
+      songName: "",
+      artist: "",
+      lyrics: "",
+      videoLink: "",
+      image: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    }
-    //https://orion.apiseeds.com/api/music/lyric/Patsy Cline/crazy?apikey=EMvxpFHfby2rEWssJnkr8rFYmQ1y8WONbq9qiWJKELQPfYgvz9Rm29AqIlNTglYo 
+  handleChange(event) {
+    this.setState({ [event.currentTarget.id]: event.currentTarget.value });
+  }
 
-
-
-
-
-
-    /////
-
-    handleChange(event) {
-        this.setState({[event.currentTarget.id]: event.currentTarget.value})
-        
-    }
-
-handleSubmit (event) {
-    event.preventDefault()
-    fetch(baseUrl + '/song', {
-        method: 'POST',
-        body: JSON.stringify({
-            songName: this.state.songName,
-            artist: this.state.artist,
-            lyrics: this.state.lyrics,
-            videoLink: this.state.videoLink,
-            image: this.state.image
-        }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    }).then (res => res.json())
-        .then (resJson => {
-            console.log(resJson)
+  handleSubmit(event) {
+    event.preventDefault();
+    fetch(baseUrl + "/song", {
+      method: "POST",
+      body: JSON.stringify({
+        songName: this.state.songName,
+        artist: this.state.artist,
+        lyrics: this.state.lyrics,
+        videoLink: this.state.videoLink,
+        image: this.state.image,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((resJson) => {
+        console.log(resJson);
         // this.props.handleAddSong(resJson)
         this.setState({
-            songName: '',
-            artist: '',
-            lyrics: '',
-            videoLink: '',
-            image: ''
-        })
-    }).catch (error => console.error({'Error': error}))
-}
+          songName: "",
+          artist: "",
+          lyrics: "",
+          videoLink: "",
+          image: "",
+        });
+      })
+      .catch((error) => console.error({ Error: error }));
+  }
 
+  render() {
+    return (
+      <Container>
+        <Form onSubmit={(event) => this.handleSubmit(event)}>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Song Title"
+              id="songName"
+              value={this.state.songName}
+              onChange={this.handleChange}
+            />
+            <br />
 
+            <Form.Control
+              type="text"
+              placeholder="Artist"
+              id="artist"
+              value={this.state.artist}
+              onChange={this.handleChange}
+            />
+            <br />
 
+            <Form.Group controlId="Form.ControlTextarea" />
+            <Form.Control
+              as="textarea"
+              placeholder="Lyrics"
+              id="lyrics"
+              value={this.state.lyrics}
+              onChange={this.handleChange}
+            />
+            <br />
 
-    render() {
-        return (
-            <Container>
-                <h3>Enter Song</h3>
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <label htmlFor= "songName" >Song Name:</label>
+            <Form.Control
+              type="text"
+              placeholder="Video Link"
+              id="videoLink"
+              value={this.state.videoLink}
+              onChange={this.handleChange}
+            />
+            <br />
 
-                    <input type="text" id="songName" value={this.state.songName} onChange={this.handleChange}></input><br></br>
+            <Form.Control
+              type="text"
+              id="image"
+              placeholder="Image Link"
+              value={this.state.image}
+              onChange={this.handleChange}
+            />
+            <br></br>
 
-                <label htmlFor= "artist">Artist:</label>
-
-                    <input type="text" id="artist" value={this.state.artist} onChange={this.handleChange}></input><br></br>
-
-                <label htmlFor= "lyrics">Lyrics:</label>
-
-                    <textarea placeholder= "Add your Lyrics" id="lyrics" onChange={this.handleChange} value={this.state.lyrics}></textarea><br></br>
-
-                <label htmlFor= "videoLink">Video Link:</label>
-
-                    <input type="text" id="videoLink" value={this.state.videoLink} onChange={this.handleChange}></input><br></br>
-
-                <label htmlFor="image">Image:</label>
-
-                    <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input>
-
-                <input type="submit" value="Add Song" />
-
-                
-            </form>
-           
-           
-            
-            </Container>
-
-            
-        )
-    }
+            <Button type="submit" variant="warning">
+              Add Song
+            </Button>
+          </Form.Group>
+        </Form>
+      </Container>
+    );
+  }
 }
