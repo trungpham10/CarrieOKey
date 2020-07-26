@@ -3,7 +3,7 @@ import "../App.css";
 import { Redirect } from "react-router-dom";
 import SongList from "./SongList";
 import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/button'
+import Button from "react-bootstrap/button";
 
 export default function Login(props) {
   if (props.isLoggedIn) {
@@ -33,7 +33,10 @@ export default function Login(props) {
             value={props.logPassword}
           ></input>
           <br />
-          <a href="/signup"><Button>Not on Carrie O'Key yet? Sign up!</Button></a>
+          {props.warning ? <p>{props.warning}</p> : ""}
+          <a href="/signup">
+            <Button>Not on Carrie O'Key yet? Sign up</Button>
+          </a>
           <br />
 
           <Button type="submit">I'm in!</Button>

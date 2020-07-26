@@ -9,7 +9,10 @@ import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
 import SongList from "./components/SongList";
 import EditSong from "./components/EditSong";
+import SongLookUp from "./components/SongLookUp";
 import Container from "react-bootstrap/Container";
+import ApiRender from "./components/ApiRender"
+
 
 const baseUrl = "http://localhost:3003";
 
@@ -23,9 +26,11 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
+    songs:[],
     songsCollection: [],
     searchText: "",
     isVideoConnected: false,
+    warning: "",
   };
 
   handleChange = (event) => {
@@ -66,7 +71,7 @@ export default class App extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-
+    // debugger;
     fetch(baseUrl + "/sessions", {
       method: "POST",
       body: JSON.stringify({
@@ -77,17 +82,26 @@ export default class App extends Component {
         "Content-type": "application/json",
       },
     })
-      .then((res) => {
+      .then((res, err) => {
+        if (err) {
+          console.log(err);
+        }
         return res.json();
       })
       .then((data) => {
-        this.setState({
-          isLoggedIn: true,
-          logEmail: data.email,
-          logPassword: "",
-          firstName: data.firstName,
-          lastName: data.lastName,
-        });
+        if (data.error) {
+          this.setState({
+            warning: data.error,
+          });
+        } else {
+          this.setState({
+            isLoggedIn: true,
+            logEmail: data.email,
+            logPassword: "",
+            firstName: data.firstName,
+            lastName: data.lastName,
+          });
+        }
       });
   };
 
@@ -98,6 +112,7 @@ export default class App extends Component {
       lastName: "",
       isSignedUp: false,
       logEmail: "",
+      warning: "",
     });
   };
 
@@ -144,12 +159,15 @@ export default class App extends Component {
                     handleChange={this.handleChange}
                     handleLogin={this.handleLogin}
                     isLoggedIn={this.state.isLoggedIn}
+                    warning={this.state.warning}
                   />
                 )}
               />
               <Route exact path="/newSong" component={NewSongForm} />
               <Route exact path="/songs" component={SongList} />
               <Route exact path="/editsong" component={EditSong} />
+              <Route exact path="/songLookUp" component={SongLookUp} 
+              render={() => (<SongLookUp songs={this.state.songs}/>)}/>
               <Route
                 exact
                 path="/signup"
