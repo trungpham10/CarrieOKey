@@ -12,7 +12,7 @@ export default class Song extends Component {
           style={{ width: "20rem" }}
           id="cardStyle"
         >
-          <Card.Img variant="top" src={this.props.image} alt="album cover" />
+          <Card.Img variant="top" src={this.props.image} alt="album cover" style={{height: "20rem"}}/>
           <Card.Body>
             <Card.Title>{this.props.songName}</Card.Title>
             <Card.Subtitle>By {this.props.artist}</Card.Subtitle>
@@ -36,7 +36,7 @@ export default class Song extends Component {
             </Button>
           </Card.Body>
       </Card>
-    </a>
+        </a>
     );
   }
 }
