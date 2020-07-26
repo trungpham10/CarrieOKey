@@ -9,7 +9,10 @@ import Signup from "./components/Signup";
 import NewSongForm from "./components/NewSongForm";
 import SongList from "./components/SongList";
 import EditSong from "./components/EditSong";
+import SongLookUp from "./components/SongLookUp";
 import Container from "react-bootstrap/Container";
+import ApiRender from "./components/ApiRender"
+
 
 const baseUrl = "http://localhost:3003";
 
@@ -23,6 +26,7 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
+    songs:[],
     songsCollection: [],
     searchText: "",
     isVideoConnected: false,
@@ -162,6 +166,8 @@ export default class App extends Component {
               <Route exact path="/newSong" component={NewSongForm} />
               <Route exact path="/songs" component={SongList} />
               <Route exact path="/editsong" component={EditSong} />
+              <Route exact path="/songLookUp" component={SongLookUp} 
+              render={() => (<SongLookUp songs={this.state.songs}/>)}/>
               <Route
                 exact
                 path="/signup"

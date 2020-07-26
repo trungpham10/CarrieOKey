@@ -42,10 +42,12 @@ export default class SongList extends Component {
     });
   };
 
+
   componentDidMount() {
     console.log("Loading songs");
     this.getSongs();
   }
+
 
   render() {
     return (
