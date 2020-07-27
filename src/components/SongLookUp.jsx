@@ -35,7 +35,7 @@ export default class SongLookUp extends Component {
               .then(response => {
                 return response.json()
               }).then(json => this.setState({
-                  songs: json,
+                  song: json,
               }),
                 err => console.log(err))
                 
@@ -70,8 +70,8 @@ export default class SongLookUp extends Component {
                     </Form.Group>
                 </Form>
                 
-               {this.state.songs 
-               ? < ApiRender songs={this.state.songs}/>
+               {this.state.song 
+               ? < ApiRender song={this.state.song} setCurrentSongID={this.props.setCurrentSongID}/>
                : null
                }
             </div>

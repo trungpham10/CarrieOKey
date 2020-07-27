@@ -42,38 +42,32 @@ export default class SongList extends Component {
     });
   };
 
-
   componentDidMount() {
     console.log("Loading songs");
     this.getSongs();
   }
 
-
-  render() {
-    return (
-      <CardDeck
-        className="justify-content-center mt-5"
-        style={{ display: "flex", flexDirection: "column-reverse" }}
-      >
-        {this.state.songs.map((song) => {
-          return (
-            <div>
-              <Song
-                artist={song.artist}
-                songName={song.songName}
-                lyrics={song.lyrics}
-                videoLink={song.videoLink}
-                image={song.image}
-                lyricLength="300"
-                deleteSong={this.deleteSong}
-                songID={song._id}
-              />
-              {/* <a href="/editSong">
-                                <button>EDIT</button>
-                            </a> */}
-            </div>
-          );
-        })}
+    render() {
+        return (
+            <CardDeck className="justify-content-center mt-5">
+                {this.state.songs.map((song) => {
+                    return (
+                        <div id="cardDeck" key= {song._id}>
+                            <Song
+                                artist={song.artist}
+                                songName={song.songName}
+                                lyrics={song.lyrics}
+                                videoLink={song.videoLink}
+                                image={song.image}
+                                lyricLength='300'
+                                deleteSong={this.deleteSong}
+                                songID={song._id}
+                            />
+                            {/* {/* <a href="/editSong">}
+                            <button>EDIT</button>=   </a> */}
+                        </div>
+                    );
+                })}
       </CardDeck>
     );
   }
