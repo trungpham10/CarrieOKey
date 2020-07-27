@@ -5,12 +5,11 @@ import CardDeck from "react-bootstrap/CardDeck";
 // const baseUrl = "http://localhost:3003";
 let baseUrl;
 
-if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:3003';
+if (process.env.NODE_ENV === "development") {
+  baseUrl = "http://localhost:3003";
 } else {
-  baseUrl = 'https://carrieokey-api.herokuapp.com';
+  baseUrl = "https://carrieokey-api.herokuapp.com";
 }
-
 
 export default class SongList extends Component {
   state = {
@@ -55,24 +54,26 @@ export default class SongList extends Component {
     this.getSongs();
   }
 
-    render() {
-        return (
-            <CardDeck className="justify-content-center mt-5">
-                {this.state.songs.map((song) => {
-                    return (
-                        <div id="cardDeck" key= {song._id}>
-                            <Song
-                                artist={song.artist}
-                                songName={song.songName}
-                                image={song.image}
-                                deleteSong={this.deleteSong}
-                                songID={song._id}
-                            />
-                            {/* {/* <a href="/editSong">}
+  render() {
+    return (
+      <CardDeck className="justify-content-center mt-5">
+        {this.state.songs.map((song) => {
+          return (
+            <div id="cardDeck" key={song._id}>
+              <Song
+                artist={song.artist}
+                songName={song.songName}
+                image={song.image}
+                deleteSong={this.deleteSong}
+                songID={song._id}
+                lyrics={song.lyrics}
+                videoLink={song.videoLink}
+              />
+              {/* {/* <a href="/editSong">}
                             <button>EDIT</button>=   </a> */}
-                        </div>
-                    );
-                })}
+            </div>
+          );
+        })}
       </CardDeck>
     );
   }

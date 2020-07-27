@@ -36,12 +36,12 @@ export default function Login(props) {
             className={"m-2"}
           ></input>
           <br></br>
-          <Button type="submit" className={"m-2"}>I'm in!</Button>
+          <Button type="submit" className={"m-2"} variant="warning">Login</Button>
         </form>
           <br />
           {props.warning ? <p>{props.warning}</p> : ""}
           <a href="/signup">
-            <Button>Not on Carrie O'Key yet? Sign up</Button>
+            <Button variant="warning">Not on Carrie O'Key yet? Sign up</Button>
           </a>
           <br />
       </div>

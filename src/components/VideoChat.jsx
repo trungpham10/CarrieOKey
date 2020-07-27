@@ -1,7 +1,7 @@
-
 import React, { useState, useCallback } from "react";
 import Lobby from "./Lobby";
 import Room from "./Room";
+import { Redirect } from "react-router-dom";
 
 // const fetchUrl = "http://localhost:3003";
 let fetchUrl;
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export default function VideoChat(props) {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(props.logEmail);
   const [roomName, setRoomName] = useState("");
   const [token, setToken] = useState(null);
 
@@ -47,6 +47,10 @@ export default function VideoChat(props) {
     setToken(null);
   }, []);
 
+  if (!props.isLoggedIn) {
+    return <Redirect to="/login" />;
+  }
+
   let render;
   if (token) {
     render = (
@@ -65,6 +69,4 @@ export default function VideoChat(props) {
   }
 
   return render;
-
-
 }
