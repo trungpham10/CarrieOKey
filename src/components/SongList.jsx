@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import Song from "./Song";
 import CardDeck from "react-bootstrap/CardDeck";
 
-const baseUrl = "http://localhost:3003";
+// const baseUrl = "http://localhost:3003";
+let baseUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003';
+} else {
+  baseUrl = 'https://carrieokey-api.herokuapp.com';
+}
+
 
 export default class SongList extends Component {
   state = {
@@ -56,10 +64,7 @@ export default class SongList extends Component {
                             <Song
                                 artist={song.artist}
                                 songName={song.songName}
-                                lyrics={song.lyrics}
-                                videoLink={song.videoLink}
                                 image={song.image}
-                                lyricLength='300'
                                 deleteSong={this.deleteSong}
                                 songID={song._id}
                             />

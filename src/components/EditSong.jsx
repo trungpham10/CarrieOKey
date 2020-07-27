@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import SongTitleTable from './SongTitleTable'
 
-const baseUrl = 'http://localhost:3003'
+// const baseUrl = 'http://localhost:3003'
+let baseUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003';
+} else {
+  baseUrl = 'https://carrieokey-api.herokuapp.com';
+}
+
 export default class EditSongForm extends Component {
     constructor(props){
         super(props)

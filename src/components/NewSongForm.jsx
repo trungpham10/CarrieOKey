@@ -4,7 +4,14 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const baseUrl = "http://localhost:3003";
+// const baseUrl = "http://localhost:3003";
+let baseUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003';
+} else {
+  baseUrl = 'https://carrieokey-api.herokuapp.com';
+}
 export default class NewSongForm extends Component {
   constructor(props) {
     super(props);
