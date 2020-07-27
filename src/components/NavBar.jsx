@@ -13,40 +13,40 @@ export default function NavBar(props) {
       <Nav justify className="justify-content-center align-items-center mb-5">
 
         <Nav.Item>
-          <Nav.Link><Link to="/"><Button variant="dark">Home</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/"><Button variant="warning">Home</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/about"><Button variant="dark">About</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/about"><Button variant="warning">About</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/newSong"><Button variant="dark">New Song</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/newSong"><Button variant="warning">New Song</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/songs"><Button variant="dark">Song List</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/songs"><Button variant="warning">Song List</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/video"><Button variant="dark">Karaoke Room</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/video"><Button variant="warning">Karaoke Room</Button></Link></Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link><Link to="/songLookUp"><Button variant="dark">Search Song</Button></Link></Nav.Link>
+          <Nav.Link><Link to="/songLookUp"><Button variant="warning">Search Song</Button></Link></Nav.Link>
         </Nav.Item>
         {/* //conditional rendering of buttons based on logged in state */}
         {props.isLoggedIn ?
           <Nav.Item>
             <Nav.Link><Link to="/login" onClick={() => props.handleLogout()}>
-              <Button variant="dark">Log out</Button>
+              <Button variant="warning">Log out</Button>
             </Link></Nav.Link>
           </Nav.Item> 
           :
           <>
             <Nav.Item>
               <Nav.Link > <Link to="/login">
-                <Button variant="dark">Log in</Button>
+                <Button variant="warning">Log in</Button>
               </Link></Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link > <Link to="/signup">
-                <Button variant="dark">Sign up</Button>
+                <Button variant="warning">Sign up</Button>
               </Link></Nav.Link>
             </Nav.Item>
           </>
