@@ -38,7 +38,7 @@ export default class Song extends Component {
           {this.props.videoLink ? (
             <a href={this.props.videoLink}>
               <Button variant="primary">Link to Video of this Song</Button>
-            </a>
+            </a> //this is a note that doesnt matter
           ) : (
             ""
           )}
