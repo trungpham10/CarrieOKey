@@ -14,8 +14,16 @@ import Container from "react-bootstrap/Container";
 import ApiRender from "./components/ApiRender"
 
 
-const baseUrl = "http://localhost:3003";
+// const baseUrl = "http://localhost:3003";
 
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003';
+} else {
+  // "https://fathomless-sierra-68956.herokuapp.com" in this case is the *API* url
+  baseURL = 'https://carrieokey-api.herokuapp.com';
+}
 export default class App extends Component {
   state = {
     firstName: "",
