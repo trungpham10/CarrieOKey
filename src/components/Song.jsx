@@ -35,7 +35,7 @@ export default class Song extends Component {
         className="text-center bg-dark text-white mb-2 "
         style={{
           width: "15rem",
-          height: "22rem",
+          height: "25rem",
         }}
         id="cardStyle"
       >
@@ -68,9 +68,13 @@ export default class Song extends Component {
             </Link> */}
           {/* <Show /> */}
           <Button variant="primary" onClick={(evt) => this.handleShow(evt)}>
-            Launch static backdrop modal
+            See Full Song
           </Button>
-          <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal
+            show={this.state.show}
+            onHide={this.handleClose}
+            dialogClassName="modal-50w"
+          >
             <Modal.Header closeButton>
               <Modal.Title>
                 {this.props.songName} by {this.props.artist}
