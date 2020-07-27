@@ -57,7 +57,7 @@ export default class App extends Component {
   handleSignup = (event) => {
     event.preventDefault();
 
-    fetch(baseUrl + "/users", {
+    fetch(baseURL + "/users", {
       method: "POST",
       body: JSON.stringify({
         firstName: this.state.firstName,
@@ -87,7 +87,7 @@ export default class App extends Component {
   handleLogin = (event) => {
     event.preventDefault();
     // debugger;
-    fetch(baseUrl + "/sessions", {
+    fetch(baseURL + "/sessions", {
       method: "POST",
       body: JSON.stringify({
         logEmail: this.state.logEmail,
