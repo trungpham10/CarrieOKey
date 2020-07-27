@@ -3,7 +3,14 @@ import React, { useState, useCallback } from "react";
 import Lobby from "./Lobby";
 import Room from "./Room";
 
-const fetchUrl = "http://localhost:3003";
+// const fetchUrl = "http://localhost:3003";
+let fetchUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  fetchUrl = 'http://localhost:3003';
+} else {
+  fetchUrl = 'https://carrieokey-api.herokuapp.com';
+}
 
 export default function VideoChat(props) {
   const [username, setUsername] = useState("");
