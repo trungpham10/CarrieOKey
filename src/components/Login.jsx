@@ -22,6 +22,7 @@ export default function Login(props) {
             placeholder="Email"
             onChange={(evt) => props.handleChange(evt)}
             value={props.logEmail}
+            className={"m-2"}
           ></input>
           <br />
           <input
@@ -31,16 +32,17 @@ export default function Login(props) {
             placeholder="Password"
             onChange={(evt) => props.handleChange(evt)}
             value={props.logPassword}
+            className={"m-2"}
           ></input>
+          <br></br>
+          <Button type="submit" className={"m-2"}>I'm in!</Button>
+        </form>
           <br />
           {props.warning ? <p>{props.warning}</p> : ""}
           <a href="/signup">
             <Button>Not on Carrie O'Key yet? Sign up</Button>
           </a>
           <br />
-
-          <Button type="submit">I'm in!</Button>
-        </form>
       </div>
       <br />
       <SongList />

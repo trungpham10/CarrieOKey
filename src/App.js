@@ -26,7 +26,7 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
-    songs:[],
+    currentSongID: '',
     songsCollection: [],
     searchText: "",
     isVideoConnected: false,
@@ -38,6 +38,13 @@ export default class App extends Component {
       [event.target.id]: event.target.value,
     });
   };
+  
+  setCurrentSongID = (id) => {
+    this.setState({
+      currentSongID: id
+    })
+  }
+
 
   handleSignup = (event) => {
     event.preventDefault();
@@ -165,9 +172,10 @@ export default class App extends Component {
               />
               <Route exact path="/newSong" component={NewSongForm} />
               <Route exact path="/songs" component={SongList} />
-              <Route exact path="/editsong" component={EditSong} />
+              <Route exact path="/editsong" component={EditSong} 
+              render={()=> (<EditSong currentSongID={this.state.currentSongID} />)} />
               <Route exact path="/songLookUp" component={SongLookUp} 
-              render={() => (<SongLookUp songs={this.state.songs}/>)}/>
+              render={() => (<SongLookUp setCurrentSongID={this.setCurrentSongID}/>)}/>
               <Route
                 exact
                 path="/signup"
