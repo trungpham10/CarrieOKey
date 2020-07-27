@@ -11,14 +11,15 @@ import SongList from "./components/SongList";
 import EditSong from "./components/EditSong";
 import SongLookUp from "./components/SongLookUp";
 import Container from "react-bootstrap/Container";
-import ApiRender from "./components/ApiRender"
+import ApiRender from "./components/ApiRender";
+import Show from "./components/Show";
 
 let baseURL;
 
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3003';
+if (process.env.NODE_ENV === "development") {
+  baseURL = "http://localhost:3003";
 } else {
-  baseURL = 'https://carrieokey-api.herokuapp.com';
+  baseURL = "https://carrieokey-api.herokuapp.com";
 }
 
 export default class App extends Component {
@@ -31,7 +32,7 @@ export default class App extends Component {
     logPassword: "",
     isLoggedIn: false,
     isSignedUp: false,
-    currentSongID: '',
+    currentSongID: "",
     songsCollection: [],
     searchText: "",
     isVideoConnected: false,
@@ -43,17 +44,15 @@ export default class App extends Component {
       [event.target.id]: event.target.value,
     });
   };
-  
+
   setCurrentSongID = (id) => {
     this.setState({
-      currentSongID: id
-    })
-  }
-
+      currentSongID: id,
+    });
+  };
 
   handleSignup = (event) => {
     event.preventDefault();
-
 
     fetch(baseURL + "/users", {
       method: "POST",
@@ -178,10 +177,23 @@ export default class App extends Component {
               />
               <Route exact path="/newSong" component={NewSongForm} />
               <Route exact path="/songs" component={SongList} />
-              <Route exact path="/editsong" component={EditSong} 
-              render={()=> (<EditSong currentSongID={this.state.currentSongID} />)} />
-              <Route exact path="/songLookUp" component={SongLookUp} 
-              render={() => (<SongLookUp setCurrentSongID={this.setCurrentSongID}/>)}/>
+              <Route
+                exact
+                path="/editsong"
+                component={EditSong}
+                render={() => (
+                  <EditSong currentSongID={this.state.currentSongID} />
+                )}
+              />
+              <Route
+                exact
+                path="/songLookUp"
+                component={SongLookUp}
+                render={() => (
+                  <SongLookUp setCurrentSongID={this.setCurrentSongID} />
+                )}
+              />
+              <Route exact path="/songs/:id" render={() => <Show />} />
               <Route
                 exact
                 path="/signup"

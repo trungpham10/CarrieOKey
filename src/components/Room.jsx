@@ -50,7 +50,14 @@ const Room = ({ roomName, token, handleLogout }) => {
   return (
     <div>
       <button onClick={handleLogout}>Exit Room</button>
-      <div className="room" style={{ display: "flex", flexDirection: "row" }}>
+      <div
+        className="room"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <div
           className="local-participant"
           style={{ float: "left", marginTop: "150px", marginLeft: "0px" }}
