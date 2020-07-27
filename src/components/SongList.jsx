@@ -49,16 +49,10 @@ export default class SongList extends Component {
     });
   };
 
-  showSong = () =>{
-    
-
-  }
-
   componentDidMount() {
     console.log("Loading songs");
     this.getSongs();
   }
-
     render() {
         return (
             <CardDeck className="justify-content-center mt-5">
