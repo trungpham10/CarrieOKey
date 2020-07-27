@@ -1,15 +1,39 @@
 import React, { Component } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import EditModal from './EditModal.jsx'
+
 
 export default class ViewModal extends Component {
+  // constructor(props){
+  //   super(props);
+  //   this.state ={
+  //     editShow: false,
+  //   }
+  //   this.handleShow = this.handleShow.bind(this);
+  //   this.handleClose = this.handleClose.bind(this);
+  // }
+
+  // handleShow = () => {
+  //   this.setState({
+  //     editShow: true,
+  //   });
+  // };
+
+  // handleClose = () => {
+  //   this.setState({
+  //     editShow: false,
+  //   });
+  // };
+
     render() {
         return (
+          <>
             <Modal
             show={this.props.viewShow}
             onHide={this.props.handleClose}
             dialogClassName="modal-50w"
-          >
+            >
             <Modal.Header closeButton>
               <Modal.Title>
                 {this.props.songName} by {this.props.artist}
@@ -21,12 +45,6 @@ export default class ViewModal extends Component {
             </Modal.Body>
             <Modal.Footer>
               <Button
-                variant="danger"
-                onClick={() => this.props.deleteSong(this.props.songID)}
-              >
-                Delete{" "}
-              </Button>
-              <Button
                 variant="secondary"
                 onClick={(evt) => this.props.handleClose(evt)}
               >
@@ -34,6 +52,8 @@ export default class ViewModal extends Component {
               </Button>
             </Modal.Footer>
           </Modal>
+          
+          </>
         )
     }
 }

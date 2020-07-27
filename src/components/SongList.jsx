@@ -67,6 +67,7 @@ export default class SongList extends Component {
                 deleteSong={this.deleteSong}
                 songID={song._id}
                 lyrics={song.lyrics}
+                videoLink={song.videoLink}
               />
               {/* {/* <a href="/editSong">}
                             <button>EDIT</button>=   </a> */}
