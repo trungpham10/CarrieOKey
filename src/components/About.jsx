@@ -20,9 +20,9 @@ export default function Home() {
   }
 
   return (
-    <Container>
+    <Container id="about">
       <h1>About Page</h1>
-      <Button onClick={callSeedRoute()}>Seed Database</Button>
+      <Button onClick={callSeedRoute()} id="aboutbtn">Seed Database</Button>
     </Container>
   );
 }

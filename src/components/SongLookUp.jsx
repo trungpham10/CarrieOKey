@@ -49,24 +49,24 @@ export default class SongLookUp extends Component {
         // console.log(this.state.songs)
         return (
             <Container>
+                <h1>Search</h1>
             <div>
 
                 <Form onSubmit={this.handleSubmit}>
                 <Form.Group>
-                <Form.Label>Artist</Form.Label>
                 <Form.Control
                     
-                   type="text" id="artist" value={this.state.artist} onChange={this.handleChange}
+                   type="text" id="artist" placeholder= "Artist" value={this.state.artist} onChange={this.handleChange}
                    />
                    <br />
-                   <Form.Label>SONG</Form.Label>
+                   
             <Form.Control
                 
-                    type="text" id="songName" value={this.state.songName} onChange={this.handleChange}
+                    type="text" id="songName" placeholder="Song" value={this.state.songName} onChange={this.handleChange}
                     />
             <br />
 
-                    <Button type="submit" variant="warning">Look up Song</Button>
+                    <Button type="submit" variant="warning" id="searchbtn" >Submit</Button>
                     </Form.Group>
                 </Form>
                 

@@ -58,10 +58,10 @@ export default function Signup(props) {
             value={props.password}
           ></input>
           <br />
-          <a href="/login"><Button>Already a member? Sign in!</Button></a>
+          <a href="/login"><Button variant="warning">Already a member? Sign in!</Button></a>
           <br />
 
-          <Button type="submit"> Let's get started </Button>
+          <Button type="submit" variant="warning"> Let's get started </Button>
         </form>
       </div>
       <br />
