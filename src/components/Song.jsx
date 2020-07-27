@@ -30,11 +30,11 @@ export default class Song extends Component {
             <p>{this.props.artist}</p>
           </Card.Subtitle>
           <br />
-          <Card.Text>
+          {/* <Card.Text>
             <pre className="text-white text-left">
               {this.props.lyrics.slice(0, this.props.lyricLength)}...
             </pre>
-          </Card.Text>
+          </Card.Text> */}
           {this.props.videoLink ? (
             <a href={this.props.videoLink}>
               <Button variant="primary">Link to Video of this Song</Button>
