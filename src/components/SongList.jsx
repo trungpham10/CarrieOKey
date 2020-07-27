@@ -49,6 +49,11 @@ export default class SongList extends Component {
     });
   };
 
+  showSong = () =>{
+    
+
+  }
+
   componentDidMount() {
     console.log("Loading songs");
     this.getSongs();
@@ -63,10 +68,7 @@ export default class SongList extends Component {
                             <Song
                                 artist={song.artist}
                                 songName={song.songName}
-                                lyrics={song.lyrics}
-                                videoLink={song.videoLink}
                                 image={song.image}
-                                lyricLength='300'
                                 deleteSong={this.deleteSong}
                                 songID={song._id}
                             />
