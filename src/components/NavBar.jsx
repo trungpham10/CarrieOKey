@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button'
 export default function NavBar(props) {
   return (
     <Container>
-
       <Nav justify className="justify-content-center align-items-center mb-5">
 
         <Nav.Item>

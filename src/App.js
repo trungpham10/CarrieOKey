@@ -13,9 +13,6 @@ import SongLookUp from "./components/SongLookUp";
 import Container from "react-bootstrap/Container";
 import ApiRender from "./components/ApiRender"
 
-
-// const baseUrl = "http://localhost:3003";
-
 let baseURL;
 
 if (process.env.NODE_ENV === 'development') {
@@ -23,6 +20,7 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   baseURL = 'https://carrieokey-api.herokuapp.com';
 }
+
 export default class App extends Component {
   state = {
     firstName: "",
@@ -55,6 +53,7 @@ export default class App extends Component {
 
   handleSignup = (event) => {
     event.preventDefault();
+
 
     fetch(baseURL + "/users", {
       method: "POST",
