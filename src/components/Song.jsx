@@ -119,10 +119,14 @@ export default class Song extends Component {
           >
             <Modal.Header closeButton>
               <Modal.Title>
-                {this.props.songName} by {this.props.artist}
+                {this.props.songName} by {this.props.artist} <br />
               </Modal.Title>
             </Modal.Header>
-
+            <p style={{ textAlign: "center" }}>
+              <Link to="/video">
+                <Button>Karaoke!</Button>
+              </Link>
+            </p>
             <Modal.Body>
               <pre>{this.props.lyrics}</pre>
             </Modal.Body>
