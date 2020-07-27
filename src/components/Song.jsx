@@ -4,12 +4,14 @@ import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Show from "./Show";
+import ViewModal from "./ViewModal";
 
 export default class Song extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
+      viewShow: false,
+      editShow: false,
     };
 
     this.handleShow = this.handleShow.bind(this);
@@ -18,13 +20,14 @@ export default class Song extends Component {
 
   handleShow = (event) => {
     this.setState({
-      show: !this.state.show,
+      viewShow: true,
     });
   };
 
   handleClose = (event) => {
     this.setState({
-      show: false,
+      editShow: false,
+      viewShow: false,
     });
   };
 
@@ -67,11 +70,24 @@ export default class Song extends Component {
               <Button variant="warning">See full song</Button>
             </Link> */}
           {/* <Show /> */}
-          <Button variant="primary" onClick={(evt) => this.handleShow(evt)}>
+          <Button variant="primary" id="viewShow" onClick={(evt) => this.handleShow(evt)}>
             See Full Song
           </Button>
-          <Modal
-            show={this.state.show}
+          <ViewModal 
+          viewShow={this.state.viewShow}
+          id='viewShow'
+          onHide={this.handleClose}
+          dialogClassName="modal-50w"
+          songName={this.props.songName}
+          artist={this.props.artist}
+          lyrics={this.props.lyrics}
+          deleteSong={this.props.deleteSong}
+          songID={this.props.songID}
+          handleClose={this.handleClose}
+          />
+          {/* <Modal
+            show={this.state.viewShow}
+            id='viewShow'
             onHide={this.handleClose}
             dialogClassName="modal-50w"
           >
@@ -92,13 +108,14 @@ export default class Song extends Component {
                 Delete{" "}
               </Button>
               <Button
-                variant="secondary"
-                onClick={(evt) => this.handleClose(evt)}
+                variant="secondary" 
+                id="viewShow"
+                onClick={(evt) => this.handleShow(evt)}
               >
                 Close
               </Button>
             </Modal.Footer>
-          </Modal>
+          </Modal> */}
         </Card.Body>
       </Card>
       // </a>
