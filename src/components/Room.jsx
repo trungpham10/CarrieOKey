@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Video from "twilio-video";
 import Participant from "./Participant";
+import Button from "react-bootstrap/Button";
 
 const Room = ({ roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
@@ -49,7 +50,7 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   return (
     <div>
-      <button onClick={handleLogout}>Exit Room</button>
+      <Button onClick={handleLogout} variant="warning">Exit Room</Button>
       <div className="room" style={{ display: "flex", flexDirection: "row" }}>
         <div
           className="local-participant"

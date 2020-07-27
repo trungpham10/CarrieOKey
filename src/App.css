@@ -43,21 +43,12 @@
   
 }
 
-#btn{
-  margin: 5px;
-  margin-bottom: 400px;
-  
-}
-
-.nav {
-  background: lightgrey;
-  margin-bottom: 100%;
-}
-
-
-
 #cardDeck{
   flex-wrap: wrap;
   flex: initial;
+}
+
+#aboutbtn, #searchbtn, #btn{
+  margin-bottom: 1000px;
 }
 
