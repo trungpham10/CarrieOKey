@@ -22,6 +22,8 @@
   color: whitesmoke;
   /* background-color: rgb(18, 4, 153); */
   margin-top: 10px;
+  
+  
 }
 
 
@@ -49,8 +51,9 @@
 }
 
 .nav {
-  background: lightgrey;
+  margin-bottom: 100%;
 }
+
 
 
 #cardDeck{

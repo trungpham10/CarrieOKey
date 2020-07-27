@@ -56,10 +56,7 @@ export default class SongList extends Component {
                             <Song
                                 artist={song.artist}
                                 songName={song.songName}
-                                lyrics={song.lyrics}
-                                videoLink={song.videoLink}
                                 image={song.image}
-                                lyricLength='300'
                                 deleteSong={this.deleteSong}
                                 songID={song._id}
                             />
