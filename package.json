@@ -1,9 +1,9 @@
 {
   "name": "carrieokey",
   "version": "0.1.0",
-  "engines" : {
-    "node" : "14.3.0",
-    "npm" : "6.14.5"
+  "engines": {
+    "node": "14.3.0",
+    "npm": "6.14.5"
   },
   "private": true,
   "dependencies": {
