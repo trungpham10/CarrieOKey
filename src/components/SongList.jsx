@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import Song from "./Song";
 import CardDeck from "react-bootstrap/CardDeck";
 
-const baseUrl = "http://localhost:3003";
+// const baseUrl = "http://localhost:3003";
+let baseUrl;
+
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3003';
+} else {
+  baseUrl = 'https://carrieokey-api.herokuapp.com';
+}
 
 export default class SongList extends Component {
   state = {

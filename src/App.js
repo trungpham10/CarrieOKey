@@ -14,8 +14,15 @@ import Container from "react-bootstrap/Container";
 import ApiRender from "./components/ApiRender"
 
 
-const baseUrl = "http://localhost:3003";
+// const baseUrl = "http://localhost:3003";
 
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003';
+} else {
+  baseURL = 'https://carrieokey-api.herokuapp.com';
+}
 export default class App extends Component {
   state = {
     firstName: "",
@@ -49,7 +56,7 @@ export default class App extends Component {
   handleSignup = (event) => {
     event.preventDefault();
 
-    fetch(baseUrl + "/users", {
+    fetch(baseURL + "/users", {
       method: "POST",
       body: JSON.stringify({
         firstName: this.state.firstName,
@@ -79,7 +86,7 @@ export default class App extends Component {
   handleLogin = (event) => {
     event.preventDefault();
     // debugger;
-    fetch(baseUrl + "/sessions", {
+    fetch(baseURL + "/sessions", {
       method: "POST",
       body: JSON.stringify({
         logEmail: this.state.logEmail,
