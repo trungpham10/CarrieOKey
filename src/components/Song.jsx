@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 export default class Song extends Component {
   render() {
     return (
-      <a href="./Show">
+      
         <Card
           className="text-center bg-dark text-white mb-2 "
           style={{ width: "20rem" }}
@@ -36,7 +36,7 @@ export default class Song extends Component {
             </Button>
           </Card.Body>
       </Card>
-        </a>
+        
     );
   }
 }
