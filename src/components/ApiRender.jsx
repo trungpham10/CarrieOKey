@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 // import { Redirect } from 'react-router-dom'
 // import { useHistory } from "react-router-dom";
 // const baseUrl = "http://localhost:3003";
@@ -9,7 +10,6 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   baseUrl = 'https://carrieokey-api.herokuapp.com';
 }
-
 export default class ApiRender extends Component {
 
   constructor(props) {

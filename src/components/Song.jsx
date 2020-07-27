@@ -7,9 +7,12 @@ export default class Song extends Component {
   render() {
     return (
       <a href="./Show.jsx">
-        <Card
+      <Card
           className="text-center bg-dark text-white mb-2 "
-          style={{ width: "15rem" }}
+          style={{ 
+            width: "15rem",
+            height: "22rem"
+          }}
           id="cardStyle"
         >
           <Card.Img variant="top" src={this.props.image} alt="album cover" style={{height: "15rem"}}/>
@@ -28,15 +31,15 @@ export default class Song extends Component {
             ) : (
               ""
             )}
-            <Button
+            {/* <Button
               variant="danger"
               onClick={() => this.props.deleteSong(this.props.songID)}
-            >
+              >
               Delete{" "}
-            </Button>
+            </Button> */}
           </Card.Body>
       </Card>
-        </a>
+    </a>
     );
   }
 }

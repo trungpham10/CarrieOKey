@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'development') {
   baseUrl = 'https://carrieokey-api.herokuapp.com';
 }
 
+
 export default class SongList extends Component {
   state = {
     songs: [],
@@ -48,11 +49,6 @@ export default class SongList extends Component {
       this.setState({ songs: copySongs });
     });
   };
-
-  showSong = () =>{
-    
-
-  }
 
   componentDidMount() {
     console.log("Loading songs");
