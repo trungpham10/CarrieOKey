@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Lobby from "./Lobby";
 import Room from "./Room";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const fetchUrl = "http://localhost:3003";
 
@@ -40,7 +40,13 @@ export default function VideoChat(props) {
         headers: {
           "Content-type": "application/json",
         },
-      }).then((res) => res.json());
+      })
+        .then((res) => res.json())
+        .catch(() => {
+          console.log("error");
+          alert("Song not found, please try again.");
+          return <Link to="/"></Link>;
+        });
       console.log("data", songData);
       setFoundSong(songData);
       // foundArtist = songData.artist;
