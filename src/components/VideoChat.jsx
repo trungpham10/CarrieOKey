@@ -8,6 +8,8 @@ const fetchUrl = "http://localhost:3003";
 export default function VideoChat(props) {
   const [roomName, setRoomName] = useState("");
   const [token, setToken] = useState(null);
+  const [foundSong, setFoundSong] = useState(null);
+  let foundArtist = props.foundArtist;
 
   const handleRoomNameChange = useCallback((event) => {
     setRoomName(event.target.value);
@@ -27,6 +29,20 @@ export default function VideoChat(props) {
         },
       }).then((res) => res.json());
       setToken(data.token);
+
+      const songData = await fetch(fetchUrl + "/song/findOne", {
+        method: "POST",
+        body: JSON.stringify({
+          songName: roomName,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((res) => res.json());
+      console.log("data", songData);
+      setFoundSong(songData);
+      foundArtist = songData.artist;
+      // props.foundLyrics = songData.lyrics;
     },
     [roomName]
   );
@@ -37,13 +53,21 @@ export default function VideoChat(props) {
   }, []);
 
   if (!props.isLoggedIn) {
+    // alert("Please login to continue!");
     return <Redirect to="/login" />;
   }
 
   let render;
   if (token) {
     render = (
-      <Room roomName={roomName} token={token} handleLogout={handleLogout} />
+      <Room
+        foundSong={foundSong}
+        foundArtist={props.foundArtist}
+        foundLyrics={props.foundLyrics}
+        roomName={roomName}
+        token={token}
+        handleLogout={handleLogout}
+      />
     );
   } else {
     render = (

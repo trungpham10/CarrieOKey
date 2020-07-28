@@ -56,7 +56,10 @@ export default class SongList extends Component {
 
   render() {
     return (
-      <CardDeck className="justify-content-center mt-5">
+      <CardDeck
+        className="justify-content-center mt-5"
+        style={{ type: "flex", flexDirection: "row-reverse" }}
+      >
         {this.state.songs.map((song) => {
           return (
             <div id="cardDeck" key={song._id}>

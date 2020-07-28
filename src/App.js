@@ -37,6 +37,8 @@ export default class App extends Component {
     searchText: "",
     isVideoConnected: false,
     warning: "",
+    foundArtist: "",
+    foundLyrics: "",
   };
 
   handleChange = (event) => {

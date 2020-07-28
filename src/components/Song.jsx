@@ -82,7 +82,7 @@ export default class Song extends Component {
             </Modal.Header>
             <p style={{ textAlign: "center" }}>
               <Link to="/video">
-                <Button>Karaoke!</Button>
+                <Button songName={this.props.songName}>Karaoke!</Button>
               </Link>
             </p>
             <Modal.Body>
