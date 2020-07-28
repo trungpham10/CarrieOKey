@@ -3,28 +3,43 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Show from "./Show";
+import ViewModal from "./ViewModal";
+import EditModal from "./EditModal";
 
 export default class Song extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
+      viewShow: false,
+      editShow: false,
     };
 
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleViewShow = this.handleViewShow.bind(this);
+    this.handleViewClose = this.handleViewClose.bind(this);
+    this.handleEditShow = this.handleEditShow.bind(this);
+    this.handleEditClose = this.handleEditClose.bind(this);
   }
 
-  handleShow = (event) => {
+  handleViewShow = (event) => {
     this.setState({
-      show: !this.state.show,
+      viewShow: true,
     });
   };
 
-  handleClose = (event) => {
+  handleViewClose = (event) => {
     this.setState({
-      show: false,
+      viewShow: false,
+    });
+  };
+  handleEditShow = (event) => {
+    this.setState({
+      editShow: true,
+    });
+  };
+
+  handleEditClose = (event) => {
+    this.setState({
+      editShow: false,
     });
   };
 
@@ -35,7 +50,7 @@ export default class Song extends Component {
         className="text-center bg-dark text-white mb-2 "
         style={{
           width: "15rem",
-          height: "25rem",
+          height: "27rem",
         }}
         id="cardStyle"
       >
@@ -43,7 +58,10 @@ export default class Song extends Component {
           variant="top"
           src={this.props.image}
           alt="album cover"
-          style={{ height: "15rem" }}
+          style={{ 
+            height: "15rem",
+            
+          }}
         />
         <Card.Body>
           <Card.Title>{this.props.songName}</Card.Title>
@@ -67,11 +85,38 @@ export default class Song extends Component {
               <Button variant="warning">See full song</Button>
             </Link> */}
           {/* <Show /> */}
-          <Button variant="primary" onClick={(evt) => this.handleShow(evt)}>
-            See Full Song
+          <Button className="mb-2" variant="primary" id="viewShow" onClick={(evt) => this.handleViewShow(evt)}>
+            View Song
+          </Button><br></br>
+          <Button  variant="primary" id="editShow" onClick={(evt) => this.handleEditShow(evt)}>
+            Edit Song
           </Button>
-          <Modal
-            show={this.state.show}
+          <ViewModal 
+          viewShow={this.state.viewShow}
+          id='viewShow'
+          onHide={this.handleClose}
+          dialogClassName="modal-50w"
+          songName={this.props.songName}
+          artist={this.props.artist}
+          lyrics={this.props.lyrics}
+          songID={this.props.songID}
+          handleClose={this.handleViewClose}
+          />
+          <EditModal
+          editShow={this.state.editShow}
+          onHide={this.handleClose}
+          songName={this.props.songName}
+          artist={this.props.artist}
+          lyrics={this.props.lyrics}
+          deleteSong={this.props.deleteSong}
+          songID={this.props.songID}
+          handleClose={this.handleEditClose}
+          videoLink={this.props.videoLink}
+          image={this.props.image}
+          ></EditModal>
+          {/* <Modal
+            show={this.state.viewShow}
+            id='viewShow'
             onHide={this.handleClose}
             dialogClassName="modal-50w"
           >
@@ -96,13 +141,14 @@ export default class Song extends Component {
                 Delete{" "}
               </Button>
               <Button
-                variant="secondary"
-                onClick={(evt) => this.handleClose(evt)}
+                variant="secondary" 
+                id="viewShow"
+                onClick={(evt) => this.handleShow(evt)}
               >
                 Close
               </Button>
             </Modal.Footer>
-          </Modal>
+          </Modal> */}
         </Card.Body>
       </Card>
       // </a>
