@@ -72,7 +72,7 @@ addSong(event) {
                       className="text-center bg-dark text-white mb-50 "
                       style={{
                         width: "40rem",
-                        height: "40rem",
+                        height: "80rem",
                         
                       }}
                       id="cardStyle1"
