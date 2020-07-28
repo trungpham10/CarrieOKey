@@ -68,13 +68,16 @@ const Participant = ({ participant }) => {
       style={{
         textAlign: "center",
         display: "fit-content",
-        width: "300px",
-        height: "300px",
       }}
     >
-      <video ref={videoRef} autoPlay={true} width="250" />
-      <h3>{participant.identity}</h3>
-      <audio ref={audioRef} autoPlay={true} muted={true} />
+      <video
+        ref={videoRef}
+        autoPlay={true}
+        width="270"
+        style={{ borderRadius: "10px" }}
+      />
+      {/* <h3>{participant.identity}</h3> */}
+      <audio ref={audioRef} autoPlay={true} />
     </div>
   );
 };

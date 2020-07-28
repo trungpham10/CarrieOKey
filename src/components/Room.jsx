@@ -67,14 +67,6 @@ const Room = ({
           <h2>{roomName}</h2>
           <p>{foundArtist}</p>
         </p>
-        <iframe
-          width="560"
-          height="315"
-          src={foundSong.videoLink}
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
         <br />
         <div
           className="room"
@@ -86,7 +78,7 @@ const Room = ({
         >
           <div
             className="local-participant"
-            style={{ float: "left", marginTop: "150px", marginLeft: "0px" }}
+            style={{ float: "left", marginTop: "0px", marginLeft: "0px" }}
           >
             {room ? (
               <Participant
@@ -98,12 +90,21 @@ const Room = ({
             )}
           </div>
           <div className="song-display">
+            <iframe
+              width="550"
+              height="315"
+              src={foundSong.videoLink}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              style={{ borderRadius: "10px" }}
+              allowFullScreen
+            ></iframe>
             <p>LYRICS</p>
             <pre>{foundLyrics}</pre>
           </div>
           <div
             className="remote-participants"
-            style={{ float: "right", marginTop: "150px", marginRight: "0px" }}
+            style={{ float: "right", marginTop: "0px", marginRight: "0px" }}
           >
             {remoteParticipants}
           </div>
