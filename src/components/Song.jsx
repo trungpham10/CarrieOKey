@@ -50,7 +50,7 @@ export default class Song extends Component {
         className="text-center bg-dark text-white mb-2 "
         style={{
           width: "15rem",
-          height: "25rem",
+          height: "27rem",
         }}
         id="cardStyle"
       >
