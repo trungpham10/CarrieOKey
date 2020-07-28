@@ -1,3 +1,49 @@
+ # Carrie O'Key
+
+#### Github : https://github.com/joshua-agee/CarrieOKey
+
+#### Heroku Front End:
+#### https://dashboard.heroku.com/apps/carrieokey
+
+#### Heroku Backend:
+#### https://dashboard.heroku.com/apps/carrieokey-api
+
+
+#### Technologies Used:
+##### Node.js
+##### Mongoose
+##### Express
+##### React
+##### Bootstrap
+##### CSS
+##### Heroku
+##### GitHub
+
+
+#### Summary of Carrie O'Key
+
+This application uses React and Heroku to launch and maintain a Karaoke experience for singers just like you. This app allows a user to create a profile, add their favorite Karaoke songs, view the lyrics, and video chat with friends, allowing friends to sing their favorite songs together.
+
+
+#### Unresolved Issue:
+Minor styling details
+
+Finding an api that allows more data to be called (i.e, Video link)
+
+
+#### Credits
+
+https://apiseeds.com/documentation/lyrics
+
+https://react-bootstrap.netlify.app/
+
+https://www.twilio.com/
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
