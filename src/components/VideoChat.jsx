@@ -9,9 +9,6 @@ export default function VideoChat(props) {
   const [roomName, setRoomName] = useState("");
   const [token, setToken] = useState(null);
   const [foundSong, setFoundSong] = useState(props.foundSong);
-  // let foundArtist = props.foundArtist;
-  const [foundArtist, setFoundArtist] = useState(props.foundArtist);
-  const [foundLyrics, setFoundLyrics] = useState(props.foundLyrics);
 
   const handleRoomNameChange = useCallback((event) => {
     setRoomName(event.target.value);
@@ -43,16 +40,11 @@ export default function VideoChat(props) {
       })
         .then((res) => res.json())
         .catch(() => {
-          console.log("error");
+          console.log("Something is wrong. Please try again.");
           alert("Song not found, please try again.");
           return <Link to="/"></Link>;
         });
-      console.log("data", songData);
       setFoundSong(songData);
-      // foundArtist = songData.artist;
-      setFoundArtist(songData.artist);
-      setFoundLyrics(songData.lyrics);
-      // props.foundLyrics = songData.lyrics;
     },
     [roomName]
   );
@@ -63,7 +55,7 @@ export default function VideoChat(props) {
   }, []);
 
   if (!props.isLoggedIn) {
-    // alert("Please login to continue!");
+    alert("Please login to continue");
     return <Redirect to="/login" />;
   }
 
@@ -72,11 +64,10 @@ export default function VideoChat(props) {
     render = (
       <Room
         foundSong={foundSong}
-        foundArtist={foundArtist}
-        foundLyrics={foundLyrics}
         roomName={roomName}
         token={token}
         handleLogout={handleLogout}
+        firstName={props.firstName}
       />
     );
   } else {

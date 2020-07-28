@@ -76,7 +76,6 @@ const Participant = ({ participant }) => {
         width="270"
         style={{ borderRadius: "10px" }}
       />
-      {/* <h3>{participant.identity}</h3> */}
       <audio ref={audioRef} autoPlay={true} />
     </div>
   );

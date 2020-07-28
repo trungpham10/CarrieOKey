@@ -3,14 +3,7 @@ import Video from "twilio-video";
 import Participant from "./Participant";
 import Button from "react-bootstrap/Button";
 
-const Room = ({
-  foundSong,
-  foundArtist,
-  foundLyrics,
-  roomName,
-  token,
-  handleLogout,
-}) => {
+const Room = ({ foundSong, roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
   const [participants, setParticipants] = useState([]);
 
@@ -64,8 +57,8 @@ const Room = ({
       <div>
         <br />
         <p>
-          <h2>{roomName}</h2>
-          <p>{foundArtist}</p>
+          <h2>{foundSong.songName}</h2>
+          <p>{foundSong.artist}</p>
         </p>
         <br />
         <div
@@ -100,7 +93,7 @@ const Room = ({
               allowFullScreen
             ></iframe>
             <p>LYRICS</p>
-            <pre>{foundLyrics}</pre>
+            <pre>{foundSong.lyrics}</pre>
           </div>
           <div
             className="remote-participants"
