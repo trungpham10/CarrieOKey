@@ -53,7 +53,7 @@ export default class SongLookUp extends Component {
             <div>
 
                 <Form onSubmit={this.handleSubmit}>
-                <Form.Group>
+                <Form.Group id="songLookup">
                 <Form.Control
                     
                    type="text" id="artist" placeholder= "Artist" value={this.state.artist} onChange={this.handleChange}

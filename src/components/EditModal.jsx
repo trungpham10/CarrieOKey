@@ -105,7 +105,7 @@ export default class EditModal extends Component {
 
                     <input type="text" id="image" value={this.state.image} onChange={this.handleChange}></input><br></br>
 
-                <input type="submit" value="Update Song" />
+                <Button type="submit" variant="primary" > Update Song </Button>
             </form>
                 </Modal.Body>
                 <Modal.Footer>

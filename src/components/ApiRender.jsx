@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
 // import { Redirect } from 'react-router-dom'
 // import { useHistory } from "react-router-dom";
 // const baseUrl = "http://localhost:3003";
@@ -65,17 +68,28 @@ addSong(event) {
                   this.props.song.error ? (
                   <h3>Results not found</h3> 
                   ) : (
+                    <Card
+                      className="text-center bg-dark text-white mb-50 "
+                      style={{
+                        width: "40rem",
+                        height: "40rem",
+                        
+                      }}
+                      id="cardStyle1"
               
+                    >
+              <Card.Body>
                    <ul style={{ 'list-style-type': 'none'}}> 
                          <h5 style={{'textDecoration': 'underline'}}>SONG</h5>
-                          <li>{this.props.song.result.track.name}</li>
+                         <Card.Title>{this.props.song.result.track.name}</Card.Title>
                         <h5 style={{'textDecoration': 'underline'}}>ARTIST</h5>
                           <li>{this.props.song.result.artist.name}</li>
                         <h5 style={{'textDecoration': 'underline'}}>LYRICS</h5>
-                         <li>{this.props.song.result.track.text}</li>
-                         <button onClick={(event)=>this.addSong(event)}>Add To List</button>
+                        <Card.Text>{this.props.song.result.track.text}  </Card.Text>
+                         <Button type="submit" variant="warning" id="searchbtn" onClick={(event)=>this.addSong(event)}>Add to List</Button>
                    </ul> 
-                   
+                   </Card.Body>
+                   </Card>
                   )
     }
                      

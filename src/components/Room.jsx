@@ -3,7 +3,7 @@ import Video from "twilio-video";
 import Participant from "./Participant";
 import Button from "react-bootstrap/Button";
 
-const Room = ({ roomName, token, handleLogout }) => {
+const Room = ({ foundSong, roomName, token, handleLogout }) => {
   const [room, setRoom] = useState(null);
   const [participants, setParticipants] = useState([]);
 
@@ -50,126 +50,57 @@ const Room = ({ roomName, token, handleLogout }) => {
 
   return (
     <div>
-      <button onClick={handleLogout}>Exit Room</button>
-      <br />
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube-nocookie.com/embed/TRQ54DYjZL8"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <br />
-      <div
-        className="room"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <Button onClick={handleLogout} variant="warning">
+        Exit Room
+      </Button>
+
+      <div>
+        <br />
+        <p>
+          <h2>{foundSong.songName}</h2>
+          <p>{foundSong.artist}</p>
+        </p>
+        <br />
         <div
-          className="local-participant"
-          style={{ float: "left", marginTop: "150px", marginLeft: "0px" }}
+          className="room"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          {room ? (
-            <Participant
-              key={room.localParticipant.sid}
-              participant={room.localParticipant}
-            />
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="song-display">
-          <h2>Song: {roomName}</h2>
-          <pre>
-            Ooh <br />
-            <br />
-            The difference in between
-            <br />
-            All the faces you read
-            <br />
-            When the grass ain't green
-            <br />
-            When you fix everything
-            <br />
-            <br />
-            I don't know about you
-            <br />
-            But I got to get it out
-            <br />
-            And I don't know how soon
-            <br />
-            But if we die
-            <br />
-            I want to bring the whole thing
-            <br />
-            <br />
-            Ooh
-            <br />
-            <br />
-            Who cares about a game
-            <br />
-            When it's all been replaced
-            <br />
-            Each level feels the same
-            <br />
-            It really goes either way
-            <br />
-            <br />
-            I don't know about you
-            <br />
-            but I got to get it out
-            <br />
-            And I don't know how soon
-            <br />
-            But if we die
-            <br />
-            I want to bring the whole thing
-            <br />
-            <br />
-            Ooh
-            <br />
-            <br />
-            Just another world
-            <br />
-            That I gotta get a grip of
-            <br />
-            And hold onto
-            <br />
-            <br />
-            Just another world
-            <br />
-            That I gotta get a grip of
-            <br />
-            And hold onto (ooh)
-            <br />
-            <br />
-            Just another world
-            <br />
-            That I gotta get a grip of
-            <br />
-            And hold onto
-            <br />
-            <br />
-            Just another world
-            <br />
-            That I gotta get a grip of
-            <br />
-            And hold onto
-            <br />
-            <br />
-            Oh, oh, oh, oh
-            <br />
-          </pre>
-        </div>
-        <div
-          className="remote-participants"
-          style={{ float: "right", marginTop: "150px", marginRight: "0px" }}
-        >
-          {remoteParticipants}
+          <div
+            className="local-participant"
+            style={{ float: "left", marginTop: "0px", marginLeft: "0px" }}
+          >
+            {room ? (
+              <Participant
+                key={room.localParticipant.sid}
+                participant={room.localParticipant}
+              />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="song-display">
+            <iframe
+              width="550"
+              height="315"
+              src={foundSong.videoLink}
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              style={{ borderRadius: "10px" }}
+              allowFullScreen
+            ></iframe>
+            <p>LYRICS</p>
+            <pre>{foundSong.lyrics}</pre>
+          </div>
+          <div
+            className="remote-participants"
+            style={{ float: "right", marginTop: "0px", marginRight: "0px" }}
+          >
+            {remoteParticipants}
+          </div>
         </div>
       </div>
     </div>
