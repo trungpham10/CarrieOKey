@@ -58,7 +58,10 @@ export default class Song extends Component {
           variant="top"
           src={this.props.image}
           alt="album cover"
-          style={{ height: "15rem" }}
+          style={{ 
+            height: "15rem",
+            
+          }}
         />
         <Card.Body>
           <Card.Title>{this.props.songName}</Card.Title>
@@ -82,10 +85,10 @@ export default class Song extends Component {
               <Button variant="warning">See full song</Button>
             </Link> */}
           {/* <Show /> */}
-          <Button variant="primary" id="viewShow" onClick={(evt) => this.handleViewShow(evt)}>
+          <Button className="mb-2" variant="primary" id="viewShow" onClick={(evt) => this.handleViewShow(evt)}>
             View Song
           </Button><br></br>
-          <Button variant="primary" id="editShow" onClick={(evt) => this.handleEditShow(evt)}>
+          <Button  variant="primary" id="editShow" onClick={(evt) => this.handleEditShow(evt)}>
             Edit Song
           </Button>
           <ViewModal 
