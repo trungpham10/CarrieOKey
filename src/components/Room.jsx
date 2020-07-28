@@ -63,10 +63,14 @@ const Room = ({
 
       <div>
         <br />
+        <p>
+          <h2>{roomName}</h2>
+          <p>{foundArtist}</p>
+        </p>
         <iframe
           width="560"
           height="315"
-          src="https://www.youtube-nocookie.com/embed/TRQ54DYjZL8"
+          src={foundSong.videoLink}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -94,8 +98,7 @@ const Room = ({
             )}
           </div>
           <div className="song-display">
-            <h2>{roomName}</h2>
-            <p>{foundArtist}</p>
+            <p>LYRICS</p>
             <pre>{foundLyrics}</pre>
           </div>
           <div

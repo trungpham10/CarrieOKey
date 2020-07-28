@@ -8,8 +8,10 @@ const fetchUrl = "http://localhost:3003";
 export default function VideoChat(props) {
   const [roomName, setRoomName] = useState("");
   const [token, setToken] = useState(null);
-  const [foundSong, setFoundSong] = useState(null);
-  let foundArtist = props.foundArtist;
+  const [foundSong, setFoundSong] = useState(props.foundSong);
+  // let foundArtist = props.foundArtist;
+  const [foundArtist, setFoundArtist] = useState(props.foundArtist);
+  const [foundLyrics, setFoundLyrics] = useState(props.foundLyrics);
 
   const handleRoomNameChange = useCallback((event) => {
     setRoomName(event.target.value);
@@ -41,7 +43,9 @@ export default function VideoChat(props) {
       }).then((res) => res.json());
       console.log("data", songData);
       setFoundSong(songData);
-      foundArtist = songData.artist;
+      // foundArtist = songData.artist;
+      setFoundArtist(songData.artist);
+      setFoundLyrics(songData.lyrics);
       // props.foundLyrics = songData.lyrics;
     },
     [roomName]
@@ -62,8 +66,8 @@ export default function VideoChat(props) {
     render = (
       <Room
         foundSong={foundSong}
-        foundArtist={props.foundArtist}
-        foundLyrics={props.foundLyrics}
+        foundArtist={foundArtist}
+        foundLyrics={foundLyrics}
         roomName={roomName}
         token={token}
         handleLogout={handleLogout}

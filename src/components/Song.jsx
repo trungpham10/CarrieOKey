@@ -58,22 +58,23 @@ export default class Song extends Component {
           variant="top"
           src={this.props.image}
           alt="album cover"
-          style={{ 
+          style={{
             height: "15rem",
-            
           }}
         />
         <Card.Body>
           <Card.Title>{this.props.songName}</Card.Title>
           <Card.Subtitle>By {this.props.artist}</Card.Subtitle>
-          <Card.Text>
-            {/* <pre className="text-white">
+          <br />
+          {/* <Card.Text> */}
+          {/* <pre className="text-white">
                 {this.props.lyrics.slice(0, this.props.lyricLength)}
               </pre> */}
-          </Card.Text>
+          {/* </Card.Text> */}
           {this.props.videoLink ? (
             <a href={this.props.videoLink}>
-              <Button variant="primary">Link to Video of this Song</Button>
+              <Button variant="primary">Link</Button>
+              <br />
             </a>
           ) : (
             ""
@@ -85,34 +86,44 @@ export default class Song extends Component {
               <Button variant="warning">See full song</Button>
             </Link> */}
           {/* <Show /> */}
-          <Button className="mb-2" variant="primary" id="viewShow" onClick={(evt) => this.handleViewShow(evt)}>
+          <Button
+            className="mb-2"
+            variant="primary"
+            id="viewShow"
+            onClick={(evt) => this.handleViewShow(evt)}
+          >
             View Song
-          </Button><br></br>
-          <Button  variant="primary" id="editShow" onClick={(evt) => this.handleEditShow(evt)}>
+          </Button>
+          <br></br>
+          <Button
+            variant="primary"
+            id="editShow"
+            onClick={(evt) => this.handleEditShow(evt)}
+          >
             Edit Song
           </Button>
-          <ViewModal 
-          viewShow={this.state.viewShow}
-          id='viewShow'
-          onHide={this.handleClose}
-          dialogClassName="modal-50w"
-          songName={this.props.songName}
-          artist={this.props.artist}
-          lyrics={this.props.lyrics}
-          songID={this.props.songID}
-          handleClose={this.handleViewClose}
+          <ViewModal
+            viewShow={this.state.viewShow}
+            id="viewShow"
+            onHide={this.handleClose}
+            dialogClassName="modal-50w"
+            songName={this.props.songName}
+            artist={this.props.artist}
+            lyrics={this.props.lyrics}
+            songID={this.props.songID}
+            handleClose={this.handleViewClose}
           />
           <EditModal
-          editShow={this.state.editShow}
-          onHide={this.handleClose}
-          songName={this.props.songName}
-          artist={this.props.artist}
-          lyrics={this.props.lyrics}
-          deleteSong={this.props.deleteSong}
-          songID={this.props.songID}
-          handleClose={this.handleEditClose}
-          videoLink={this.props.videoLink}
-          image={this.props.image}
+            editShow={this.state.editShow}
+            onHide={this.handleClose}
+            songName={this.props.songName}
+            artist={this.props.artist}
+            lyrics={this.props.lyrics}
+            deleteSong={this.props.deleteSong}
+            songID={this.props.songID}
+            handleClose={this.handleEditClose}
+            videoLink={this.props.videoLink}
+            image={this.props.image}
           ></EditModal>
           {/* <Modal
             show={this.state.viewShow}

@@ -39,6 +39,7 @@ export default class App extends Component {
     warning: "",
     foundArtist: "",
     foundLyrics: "",
+    foundSong: {},
   };
 
   handleChange = (event) => {
@@ -160,6 +161,7 @@ export default class App extends Component {
                     logEmail={this.state.logEmail}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    foundSong={this.state.foundSong}
                   />
                 )}
               />

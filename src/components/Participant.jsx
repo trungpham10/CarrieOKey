@@ -72,7 +72,7 @@ const Participant = ({ participant }) => {
         height: "300px",
       }}
     >
-      <video ref={videoRef} autoPlay={true} width="300" />
+      <video ref={videoRef} autoPlay={true} width="250" />
       <h3>{participant.identity}</h3>
       <audio ref={audioRef} autoPlay={true} muted={true} />
     </div>
