@@ -58,7 +58,7 @@ export default class SongList extends Component {
     return (
       <CardDeck
         className="justify-content-center mt-5"
-        style={{ type: "flex", flexDirection: "row-reverse" }}
+        style={{ type: "flex", flexDirection: "row" }}
       >
         {this.state.songs.map((song) => {
           return (
