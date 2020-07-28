@@ -49,8 +49,8 @@ export default class Song extends Component {
       <Card
         className="text-center bg-dark text-white mb-2 "
         style={{
-          width: "15rem",
-          height: "27rem",
+          width: "18rem",
+          height: "30rem",
         }}
         id="cardStyle"
       >
@@ -73,7 +73,7 @@ export default class Song extends Component {
           {/* </Card.Text> */}
           {this.props.videoLink ? (
             <a href={this.props.videoLink}>
-              <Button variant="primary">Link</Button>
+              <Button variant="primary" className="mb-2">Link</Button>
               <br />
             </a>
           ) : (
