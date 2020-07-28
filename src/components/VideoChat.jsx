@@ -6,13 +6,8 @@ import { Redirect } from "react-router-dom";
 const fetchUrl = "http://localhost:3003";
 
 export default function VideoChat(props) {
-  const [username, setUsername] = useState(props.logEmail);
   const [roomName, setRoomName] = useState("");
   const [token, setToken] = useState(null);
-
-  const handleUsernameChange = useCallback((event) => {
-    setUsername(event.target.value);
-  }, []);
 
   const handleRoomNameChange = useCallback((event) => {
     setRoomName(event.target.value);
@@ -24,7 +19,7 @@ export default function VideoChat(props) {
       const data = await fetch(fetchUrl + "/video/token", {
         method: "POST",
         body: JSON.stringify({
-          identity: username,
+          identity: props.logEmail,
           room: roomName,
         }),
         headers: {
@@ -33,11 +28,12 @@ export default function VideoChat(props) {
       }).then((res) => res.json());
       setToken(data.token);
     },
-    [username, roomName]
+    [roomName]
   );
 
   const handleLogout = useCallback((event) => {
     setToken(null);
+    setRoomName("");
   }, []);
 
   if (!props.isLoggedIn) {
@@ -52,9 +48,10 @@ export default function VideoChat(props) {
   } else {
     render = (
       <Lobby
-        username={username}
+        username={props.logEmail}
         roomName={roomName}
-        handleUsernameChange={handleUsernameChange}
+        firstName={props.firstName}
+        lastName={props.lastName}
         handleRoomNameChange={handleRoomNameChange}
         handleSubmit={handleSubmit}
       />
