@@ -18,7 +18,6 @@ export default function Home(props) {
         karaoke with them.
       </h2>
       <br></br>
-<!--       <SongList /> -->
     </Container>
   );
 }
